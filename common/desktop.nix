@@ -1,13 +1,10 @@
-{ pkgs, ... }:
-{
+{ pkgs, ... }: {
   system.copySystemConfiguration = true;
 
   nixpkgs.config = {
     allowUnfree = true;
     packageOverrides = pkgs: {
-      neovim = pkgs.neovim.override {
-        vimAlias = true;
-      };
+      neovim = pkgs.neovim.override { vimAlias = true; };
     };
   };
 
@@ -19,6 +16,7 @@
     dmidecode
     fd
     git
+    gitAndTools.gh
     gnumake
     htop
     inetutils
@@ -35,6 +33,7 @@
     tree
     unzip
     wget
+    nixfmt
   ];
 
   environment.shellInit = ''
@@ -46,14 +45,12 @@
     noto-fonts
     dejavu_fonts
     terminus
-    nerdfonts  # Includes font-awesome, material-icons, powerline-fonts
+    nerdfonts # Includes font-awesome, material-icons, powerline-fonts
     emojione
   ];
   # TODO: Use fonts.enableDefaultFonts = true?
 
-  i18n = {
-    defaultLocale = "en_US.UTF-8";
-  };
+  i18n = { defaultLocale = "en_US.UTF-8"; };
   console = {
     font = "${pkgs.terminus_font}/share/consolefonts/ter-u28n.psf.gz";
     keyMap = "us";
@@ -68,7 +65,7 @@
     enable = true;
     # Need full for bluetooth support
     package = pkgs.pulseaudioFull;
-    extraModules = [ pkgs.pulseaudio-modules-bt ];
+    # extraModules = [ pkgs.pulseaudio-modules-bt ];
   };
 
   programs.light.enable = true;
@@ -80,7 +77,8 @@
   # Gaming and app wrapping (Steam)
   services.flatpak.enable = true;
   services.accounts-daemon.enable = true; # Required for flatpak+xdg
-  xdg.portal.enable = true; # xdg portal is used for tunneling permissions to flatpak
+  xdg.portal.enable =
+    true; # xdg portal is used for tunneling permissions to flatpak
   xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
   hardware.opengl.driSupport32Bit = true;
   hardware.pulseaudio.support32Bit = true;

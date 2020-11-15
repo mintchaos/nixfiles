@@ -24,19 +24,12 @@
     # Apps
     i3status-rust
     google-chrome-beta
+    firefox
+    epiphany
+    discord
+    steam
+    vscode
 
-    # Games
-    (cataclysm-dda-git.override {
-      version = "2020-10-20";
-      rev = "cdda-jenkins-b11117";
-      sha256 = "0n1rcqvqkcn03h511ldg7giya2lzyrv8qa159iivjhkk54668f29"; # Get from: nix-prefetch-url --unpack "https://github.com/CleverRaven/Cataclysm-DDA/archive/${REV}.tar.gz"
-    })
-    (dwarf-fortress.override {
-      enableTWBT = true;
-      enableTruetype = true;
-      theme = "phoebus";
-    })
-    wesnoth
 
     # PDF, image mainpulation
     ghostscript
@@ -58,6 +51,11 @@
     nodejs-10_x
     websocat # websocket netcat
     zeal
+    docker
+    docker-compose
+    google-cloud-sdk
+
+
 
     # Programming: Rust
     #latest.rustChannels.nightly.rust

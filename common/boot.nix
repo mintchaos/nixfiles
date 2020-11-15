@@ -33,18 +33,18 @@ in
   boot.initrd.supportedFilesystems = [ "btrfs" "ntfs" ];
   boot.initrd.luks.devices = {
     cryptroot = { device = disk.cryptroot; allowDiscards = true; };
-    cryptswap = { device = disk.cryptswap; allowDiscards = true; };
+    # cryptswap = { device = disk.cryptswap; allowDiscards = true; };
   };
 
   # Filesystems
   fileSystems."/" = {
-    device = "/dev/mapper/cryptroot";
+    device = disk.root;
     fsType = "btrfs";
     options = [ "defaults" "noatime" "nodiratime" "compress=lzo" "autodefrag" "commit=100" "subvol=@rootnix" ];
   };
 
   fileSystems."/home" = {
-    device = "/dev/mapper/cryptroot";
+    device = disk.root;
     fsType = "btrfs";
     options = [ "defaults" "noatime" "compress=lzo" "autodefrag" "subvol=@home" ];
   };
@@ -57,6 +57,6 @@ in
   };
 
   swapDevices = [
-    { device = "/dev/mapper/cryptswap"; }
+    # { device = "/dev/mapper/cryptswap"; }
   ];
 }

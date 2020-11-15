@@ -1,18 +1,16 @@
 { config, pkgs, lib, ... }:
 
-{
-  imports = [
-    ./desktop.nix
-  ];
+{ imports = [
+    ./desktop.nix ];
 
   services.xserver = {
     enable = true;
     layout = "us";
     libinput.enable = true;
-
-    displayManager.startx.enable = true;
-    displayManager.defaultSession = "none+i3"; # We startx in our home.nix
     windowManager.i3.enable = true;
+    # displayManager.startx.enable = true;
+    displayManager.sddm.enable = true;
+    displayManager.defaultSession = "none+i3"; # We startx in our home.nix
   };
 
   environment.systemPackages = with pkgs; [
