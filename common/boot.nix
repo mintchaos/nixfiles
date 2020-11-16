@@ -12,8 +12,7 @@
 # - FDE example: https://github.com/Chiiruno/configuration/blob/master/etc/nixos/boot.nix
 #
 let disk = import ../disk.nix;
-in
-{
+in {
   boot.loader.systemd-boot = {
     enable = true;
     configurationLimit = 8;
@@ -32,21 +31,36 @@ in
   # LUKS
   boot.initrd.supportedFilesystems = [ "btrfs" "ntfs" ];
   boot.initrd.luks.devices = {
-    cryptroot = { device = disk.cryptroot; allowDiscards = true; };
-    # cryptswap = { device = disk.cryptswap; allowDiscards = true; };
+    cryptroot = {
+      device = disk.cryptroot;
+      allowDiscards = true;
+    };
+    cryptswap = {
+      device = disk.cryptswap;
+      allowDiscards = true;
+    };
   };
 
   # Filesystems
   fileSystems."/" = {
     device = disk.root;
     fsType = "btrfs";
-    options = [ "defaults" "noatime" "nodiratime" "compress=lzo" "autodefrag" "commit=100" "subvol=@rootnix" ];
+    options = [
+      "defaults"
+      "noatime"
+      "nodiratime"
+      "compress=lzo"
+      "autodefrag"
+      "commit=100"
+      "subvol=@rootnix"
+    ];
   };
 
   fileSystems."/home" = {
     device = disk.root;
     fsType = "btrfs";
-    options = [ "defaults" "noatime" "compress=lzo" "autodefrag" "subvol=@home" ];
+    options =
+      [ "defaults" "noatime" "compress=lzo" "autodefrag" "subvol=@home" ];
   };
 
   fileSystems."/boot/efi" = {
@@ -56,7 +70,8 @@ in
     options = [ "discard" ];
   };
 
-  swapDevices = [
-    # { device = "/dev/mapper/cryptswap"; }
-  ];
+  swapDevices = [{
+    device = "/swapfile";
+    size = 8000;
+  }];
 }
