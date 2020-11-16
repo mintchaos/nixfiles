@@ -47,6 +47,7 @@
     terminus
     nerdfonts # Includes font-awesome, material-icons, powerline-fonts
     emojione
+    source-sans-pro
   ];
   # TODO: Use fonts.enableDefaultFonts = true?
 

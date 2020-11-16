@@ -9,7 +9,8 @@
     enable = true;
     settings = {
       colors.primary.background = "#000000";
-      env.TERM = "xterm-256color"; # ssh'ing into old servers with TERM=alacritty is sad
+      env.TERM =
+        "xterm-256color"; # ssh'ing into old servers with TERM=alacritty is sad
     };
   };
 
@@ -29,7 +30,7 @@
     discord
     steam
     vscode
-
+    slack
 
     # PDF, image mainpulation
     ghostscript
@@ -54,8 +55,6 @@
     docker
     docker-compose
     google-cloud-sdk
-
-
 
     # Programming: Rust
     #latest.rustChannels.nightly.rust
