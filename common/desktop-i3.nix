@@ -1,15 +1,16 @@
 { config, pkgs, lib, ... }:
 
-{ imports = [
-    ./desktop.nix ];
+{
+  imports = [ ./desktop.nix ];
 
   services.xserver = {
     enable = true;
     layout = "us";
     libinput.enable = true;
     windowManager.i3.enable = true;
-    # displayManager.startx.enable = true;
-    displayManager.sddm.enable = true;
+    windowManager.i3.package = pkgs.i3-gaps;
+    # windowManager.default = "i3-gaps";
+    displayManager.startx.enable = true;
     displayManager.defaultSession = "none+i3"; # We startx in our home.nix
   };
 
@@ -31,7 +32,7 @@
   systemd.user.services.clipmenud = {
     enable = true;
     description = "Clipmenu daemon";
-    serviceConfig =  {
+    serviceConfig = {
       Type = "simple";
       NoNewPrivileges = true;
       ProtectControlGroups = true;
@@ -43,6 +44,7 @@
     after = [ "graphical-session.target" ];
     environment = {
       DISPLAY = ":0";
+      CM_OUTPUT_CLIP = "true";
     };
     path = [ pkgs.clipmenu ];
     script = ''
