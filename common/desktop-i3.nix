@@ -9,8 +9,7 @@
     libinput.enable = true;
     windowManager.i3.enable = true;
     windowManager.i3.package = pkgs.i3-gaps;
-    # windowManager.default = "i3-gaps";
-    displayManager.startx.enable = true;
+    # displayManager.startx.enable = true;
     displayManager.defaultSession = "none+i3"; # We startx in our home.nix
   };
 
