@@ -26,7 +26,7 @@ in {
   boot.loader.efi.efiSysMountPoint = "/boot/efi";
 
   # Resume
-  boot.resumeDevice = "/dev/mapper/cryptswap";
+  # boot.resumeDevice = "/dev/mapper/cryptswap";
 
   # LUKS
   boot.initrd.supportedFilesystems = [ "btrfs" "ntfs" ];
@@ -35,10 +35,10 @@ in {
       device = disk.cryptroot;
       allowDiscards = true;
     };
-    cryptswap = {
-      device = disk.cryptswap;
-      allowDiscards = true;
-    };
+    # cryptswap = {
+    #   device = disk.cryptswap;
+    #   allowDiscards = true;
+    # };
   };
 
   # Filesystems
@@ -70,8 +70,5 @@ in {
     options = [ "discard" ];
   };
 
-  swapDevices = [{
-    device = "/swapfile";
-    size = 8000;
-  }];
+  swapDevices = [{ device = disk.swap; }];
 }

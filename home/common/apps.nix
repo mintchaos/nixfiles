@@ -32,7 +32,15 @@
     vscode
     slack
 
+    playerctl
+
+    # rofi things
+    rofi-calc
+    rofimoji
+
     # PDF, image mainpulation
+    flameshot
+    okular
     ghostscript
     gimp
     qpdf
@@ -72,6 +80,7 @@
     srandrd # Daemon for detecting hotplug display changes, calls autorandr
 
     # TODO: Move these to system config?
+    maim
     bat
     mdcat
     #delta
