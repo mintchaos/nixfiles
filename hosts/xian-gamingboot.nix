@@ -8,7 +8,9 @@
   hardware.nvidia.modesetting.enable = true;
 
   services.localtime.enable = true;
-  # time.timeZone = "America/Los_Angeles";
+
+  # ssh
+  services.sshd.enable = true;
 
   users.users.xian = {
     isNormalUser = true;
@@ -17,6 +19,9 @@
     extraGroups =
       [ "wheel" "docker" "sudoers" "audio" "video" "disk" "networkmanager" ];
     uid = 1000;
+    openssh.authorizedKeys.keys = [
+      "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDaFTyWYnGdx6cUNXVOrBUQcjzfs6JhE0kqtGNW16comvc+oED1qDEBy3Q2rKhh+gXwtiwjpZyf+8ELbQ1rAAG5rapBLk8eyESfZvpqFZLBTmt8rB7IVc85byoRgjIiS6x6h3n8fefFMOUoft832u3CGidQ+50qLVqdIquyeWu+77uvIWCGyXHgOe5ufN9hf1CUA8ZCsJqmRDFgbXjJCRkcPXEXd/605eUkGh8KhV4Y6Zjj8JkC/VcJsaI3x6b626ZUmzn56Sn+rOqo1zOdXzyvz54Q+EydO/CyEVpW7G4YjL32d6XQtaB35qkdU8nHX1U7L4L6E3pKGJtMcTlV56NV xian@Brain-Problem-Situation.local"
+    ];
     # hashedPassword = let hashedPassword = import ./.hashedPassword.nix; in hashedPassword; # Make with mkpasswd
   };
 
