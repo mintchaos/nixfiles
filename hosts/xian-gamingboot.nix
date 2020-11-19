@@ -1,6 +1,7 @@
 { config, pkgs, lib, ... }:
 
 {
+  boot.kernelPackages = pkgs.linuxPackages_latest;
   boot.blacklistedKernelModules = [ "mei_me" ];
   networking.hostName = "become-a-robot";
   services.dnsmasq.enable = true;

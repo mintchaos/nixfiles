@@ -25,7 +25,7 @@
     # Apps
     i3status-rust
     google-chrome-beta
-    firefox
+    firefox-beta-bin
     epiphany
     discord
     steam
@@ -37,6 +37,7 @@
     # rofi things
     rofi-calc
     rofimoji
+    surfraw
 
     # PDF, image mainpulation
     flameshot
@@ -99,6 +100,8 @@
     xorg.xkill
     pasystray
     whois
+
+    wally-cli
 
     # Needed for GTK
     gnome3.dconf

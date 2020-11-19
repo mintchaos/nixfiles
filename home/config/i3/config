@@ -8,13 +8,13 @@
 # i3 config file (v4)
 #
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
-
-set $mod Mod1
+set $mod Mod4
+set $modAlt Mod1
 #set $term i3-sensible-terminal
 set $term alacritty
 
 # Commands
-set $lockcmd screenoff
+set $lockcmd systemctl suspend
 
 # Workspaces
 # set $WS1 main
@@ -72,10 +72,10 @@ bindsym $mod+Shift+minus exec systemctl suspend
 # Screenshot
 bindsym --release $mod+Print exec ss
 bindsym --release $mod+Shift+Print exec maim -s | xclip -selection clipboard -t "image/png"
-bindsym --release Mod4+Shift+3 exec flameshot gui
+bindsym --release $modAlt+Shift+3 exec flameshot gui
 
 # Emoji
-bindsym $mod+Mod4+space exec --no-startup-id rofi -show emoji -modi emoji
+bindsym $mod+$modAlt+space exec --no-startup-id rofi -show emoji -modi emoji
 
 # Scratchpath
 bindsym $mod+Shift+grave move scratchpad
@@ -84,8 +84,8 @@ for_window [instance="dropdown"] move scratchpad, border pixel 2, resize set 80 
 bindsym $mod+grave [instance="dropdown"] scratchpad show
 
 # Workspaces
-bindsym $mod+Mod4+Right workspace next
-bindsym $mod+Mod4+Left workspace prev
+bindsym $mod+$modAlt+Right workspace next
+bindsym $mod+$modAlt+Left workspace prev
 bindsym $mod+Control+Left move workspace to output left
 bindsym $mod+Control+Right move workspace to output right
 
@@ -270,7 +270,7 @@ bindsym $mod+r mode "resize"
 
 ### dracula colors https://github.com/dracula/i
 # class                 border  bground text    indicator child_border
-client.focused          #6272A4 #6272A4 #F8F8F2 #6272A4   #6272A4
+client.focused          #8e5db1 #8e5db1 #F8F8F2 #8e5db1   #8e5db1
 client.focused_inactive #44475A #44475A #F8F8F2 #44475A   #44475A
 client.unfocused        #282A36 #282A36 #BFBFBF #282A36   #282A36
 client.urgent           #44475A #FF5555 #F8F8F2 #FF5555   #FF5555
@@ -311,11 +311,11 @@ bindsym $mod+b bar mode toggle
 
 # GAPS STUFF
 # Disable window titlebars entirely
-for_window [class="^.*"] border pixel 2
+for_window [class="^.*"] border pixel 4
 
 # Set inner/outer gaps
 gaps inner 10
-gaps outer 5
+gaps outer 0
 
 # Additionally, you can issue commands with the following syntax. This is useful to bind keys to changing the gap size.
 # gaps inner|outer current|all set|plus|minus <px>
