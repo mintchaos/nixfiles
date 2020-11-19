@@ -4,6 +4,7 @@
   services.gnome3.gnome-keyring.enable = true;
   security.pam.services.lightdm.enableGnomeKeyring = true;
   programs.seahorse.enable = true;
+  programs.dconf.enable = true;
 
   nixpkgs.config = {
     allowUnfree = true;
@@ -54,16 +55,11 @@
     emojione
     source-sans-pro
   ];
-  # TODO: Use fonts.enableDefaultFonts = true?
 
-  options.hardware.video.hidpi.enable = true;
+  hardware.video.hidpi.enable = true;
   i18n = { defaultLocale = "en_US.UTF-8"; };
-  console = {
-    font = "${pkgs.terminus_font}/share/consolefonts/ter-u28n.psf.gz";
-    keyMap = "us";
-  };
-  i18n.consoleFont = "ter-i32b";
-  i18n.consolePackages = with pkgs; [ terminus_font ];
+  console.font = "ter-i32b";
+  console.packages = with pkgs; [ terminus_font ];
 
   networking.networkmanager.enable = true;
   # networking.firewall.allowedTCPPorts = [];

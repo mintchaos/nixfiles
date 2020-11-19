@@ -12,11 +12,13 @@
 
   # ssh
   services.sshd.enable = true;
+  programs.fish.enable = true;
 
   users.users.xian = {
     isNormalUser = true;
     home = "/home/xian";
-    description = "me!";
+    description = "xian";
+    shell = pkgs.fish;
     extraGroups =
       [ "wheel" "docker" "sudoers" "audio" "video" "disk" "networkmanager" ];
     uid = 1000;

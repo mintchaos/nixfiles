@@ -5,10 +5,14 @@
 
   programs.home-manager.enable = true;
   programs.git.delta.enable = true;
+  programs.termite = {
+    enable = true;
+    backgroundColor = "#262335";
+  };
   programs.alacritty = {
     enable = true;
     settings = {
-      colors.primary.background = "#000000";
+      colors.primary.background = "262335";
       env.TERM =
         "xterm-256color"; # ssh'ing into old servers with TERM=alacritty is sad
     };
@@ -47,6 +51,7 @@
     qpdf
     xournal
     zathura
+    colorpicker
     #skanlite
     #simple-scan
 
