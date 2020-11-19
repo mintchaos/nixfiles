@@ -10,8 +10,12 @@
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 set $mod Mod4
 set $modAlt Mod1
+set $hyper Mod4+Shift+Ctrl+Mod1
+set $meh Mod1+Shift+C
 #set $term i3-sensible-terminal
-set $term termite
+
+set $term alacritty
+
 
 # Commands
 set $lockcmd systemctl suspend
@@ -74,14 +78,12 @@ bindsym --release $mod+Print exec ss
 bindsym --release $mod+Shift+Print exec maim -s | xclip -selection clipboard -t "image/png"
 bindsym --release $modAlt+Shift+3 exec flameshot gui
 
-# Emoji
-bindsym $mod+$modAlt+space exec --no-startup-id rofi -show emoji -modi emoji
-
 # Scratchpath
 bindsym $mod+Shift+grave move scratchpad
-exec --no-startup-id $term --class "dropdown" -e tmux new-session -A -s scratch
-for_window [instance="dropdown"] move scratchpad, border pixel 2, resize set 80 ppt 50 ppt, move absolute position 300 0
-bindsym $mod+grave [instance="dropdown"] scratchpad show
+exec --no-startup-id $term --class "dropdown"
+for_window [class="dropdown"] move scratchpad, border pixel 2, resize set 80 ppt 50 ppt, move absolute position 300 0
+bindsym $mod+grave [class="dropdown"] scratchpad show
+bindsym $hyper+m [title=".?Apple.?Music"] scratchpad show
 
 # Workspaces
 bindsym $mod+$modAlt+Right workspace next
@@ -131,10 +133,13 @@ bindsym $mod+Shift+q kill
 bindsym $mod+x [urgent=latest] focus
 
 # rofi
-bindsym $mod+space exec rofi -show run -p '$ '
+bindsym --release $mod+space exec rofi -combi-modi window#drun#run -show-icons -show combi -modi combi -display-combi ''
 bindsym $mod+Shift+Tab exec rofi -show window -p '[window] '
-bindsym $mod+Shift+v exec CM_OUTPUT_CLIP=1 CM_LAUNCHER=rofi clipmenu | xdotool type --file --delay milliseconds 0 -
+bindsym --release $mod+Shift+v exec CM_OUTPUT_CLIP=1 CM_LAUNCHER=rofi clipmenu | xdotool type --file --delay milliseconds 0 -
 bindsym $mod+Shift+slash exec i3-msg -t run_command "$(grep -o "bindsym .*" ~/.config/i3/config | rofi -dmenu | cut -d ' ' -f3-)"
+# Emoji
+bindsym --release $mod+$modAlt+space exec --no-startup-id rofi -show emoji -modi emoji
+
 
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that

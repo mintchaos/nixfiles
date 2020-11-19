@@ -73,6 +73,12 @@
     # extraModules = [ pkgs.pulseaudio-modules-bt ];
   };
 
+  # TODO: maybe a better home for this
+  programs.gnupg.agent = {
+    enable = true;
+    enableSSHSupport = true;
+  };
+
   programs.light.enable = true;
   services.avahi.enable = true;
   services.avahi.nssmdns = true;

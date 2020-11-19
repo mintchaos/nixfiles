@@ -12,7 +12,7 @@
   programs.alacritty = {
     enable = true;
     settings = {
-      colors.primary.background = "262335";
+      colors.primary.background = "#262335";
       env.TERM =
         "xterm-256color"; # ssh'ing into old servers with TERM=alacritty is sad
     };
