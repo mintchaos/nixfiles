@@ -81,8 +81,8 @@ bindsym --release $modAlt+Shift+3 exec flameshot gui
 # Scratchpath
 bindsym $mod+Shift+grave move scratchpad
 exec --no-startup-id $term --class "dropdown"
-for_window [class="dropdown"] move scratchpad, border pixel 2, resize set 80 ppt 50 ppt, move absolute position 300 0
-bindsym $mod+grave [class="dropdown"] scratchpad show
+for_window [instance="dropdown"] move scratchpad, border pixel 2, resize set 80 ppt 50 ppt, move absolute position 300 0
+bindsym $mod+grave [instance="dropdown"] scratchpad show
 bindsym $hyper+grave scratchpad show
 bindsym $hyper+m [title=".?Apple.?Music"] scratchpad show
 

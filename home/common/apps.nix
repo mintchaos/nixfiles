@@ -52,6 +52,7 @@
     xournal
     zathura
     colorpicker
+    fontpreview
     #skanlite
     #simple-scan
 
