@@ -2,7 +2,15 @@
 
 {
   boot.kernelPackages = pkgs.linuxPackages_latest;
-  boot.blacklistedKernelModules = [ "mei_me" ];
+  boot.blacklistedKernelModules = [ "mei_me" "r8169" ];
+  boot.initrd.kernelModules = [ ];
+  boot.extraModulePackages = [ config.boot.kernelPackages.r8168 ];
+  # from the hardware scan
+  boot.initrd.availableKernelModules =
+    [ "xhci_pci" "ehci_pci" "ahci" "usbhid" "usb_storage" "sd_mod" ];
+  boot.kernelModules = [ "kvm-intel" ];
+  boot.extraModulePackages = [ ];
+
   networking.hostName = "become-a-robot";
   services.dnsmasq.enable = true;
   services.dnsmasq.servers = [ "1.1.1.1" "8.8.8.8" "2001:4860:4860::8844" ];
@@ -77,13 +85,6 @@
 
   console.font =
     lib.mkForce "${pkgs.terminus_font}/share/consolefonts/ter-u16n.psf.gz";
-
-  # from the hardware scan
-  boot.initrd.availableKernelModules =
-    [ "xhci_pci" "ehci_pci" "ahci" "usbhid" "usb_storage" "sd_mod" ];
-  boot.initrd.kernelModules = [ ];
-  boot.kernelModules = [ "kvm-intel" ];
-  boot.extraModulePackages = [ ];
 
   powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
   # high-resolution display
