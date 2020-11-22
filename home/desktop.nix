@@ -5,7 +5,7 @@ in {
   # External monitor management
   # programs.autorandr = import ./config/autorandr.nix;
 
-  home.packages = with pkgs; [ blender ];
+  home.packages = with pkgs; [ blender xf86_input_wacom ];
 
   imports = [ ./common/x11.nix ./common/apps.nix ];
 
@@ -19,6 +19,4 @@ in {
     ${i3statusCfg.head}
     ${i3statusCfg.tail}
   '';
-
-  home.packages = with pkgs; [ xf86_input_wacom ];
 }
