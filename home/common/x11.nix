@@ -11,14 +11,14 @@
     . ~/.xsession
   '';
 
-  home.file.".bash_profile".text = ''
-    if [[ -f ~/.bashrc ]] ; then
-      . ~/.bashrc
-    fi
-    if [[ ! $DISPLAY && $XDG_VTNR -eq 1 ]]; then
-      exec ssh-agent startx
-    fi
-  '';
+  # home.file.".bash_profile".text = ''
+  #   if [[ -f ~/.bashrc ]] ; then
+  #     . ~/.bashrc
+  #   fi
+  #   if [[ ! $DISPLAY && $XDG_VTNR -eq 1 ]]; then
+  #     exec ssh-agent startx
+  #   fi
+  # '';
 
   gtk = {
     enable = true;
@@ -35,10 +35,11 @@
 
   xsession = {
     enable = true;
+    windowManager.command = "i3";
 
     # dbus-launch manages cross-process communication (required for GTK systray icons, etc).
     # FIXME: Is dbus-launch necessary now that it's part of xsession?
-    windowManager.command = "dbus-launch --exit-with-x11 i3";
+    # windowManager.command = "dbus-launch --exit-with-x11 i3";
 
     pointerCursor = {
       name = "Vanilla-DMZ-AA";
@@ -51,7 +52,7 @@
   # DRI3 freezing on intel
   services.picom = {
     enable = true;
-    vsync = true;
+    backend = "glx";
   };
 
   services.network-manager-applet.enable = true;
