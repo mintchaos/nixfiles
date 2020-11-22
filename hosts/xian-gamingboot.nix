@@ -2,14 +2,13 @@
 
 {
   boot.kernelPackages = pkgs.linuxPackages_latest;
-  boot.blacklistedKernelModules = [ "mei_me" "r8169" ];
+  boot.blacklistedKernelModules = [ "mei_me" ];
   boot.initrd.kernelModules = [ ];
-  boot.extraModulePackages = [ config.boot.kernelPackages.r8168 ];
+  boot.extraModulePackages = [ ];
   # from the hardware scan
   boot.initrd.availableKernelModules =
     [ "xhci_pci" "ehci_pci" "ahci" "usbhid" "usb_storage" "sd_mod" ];
   boot.kernelModules = [ "kvm-intel" ];
-  boot.extraModulePackages = [ ];
 
   networking.hostName = "become-a-robot";
   services.dnsmasq.enable = true;
