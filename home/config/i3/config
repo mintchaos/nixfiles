@@ -139,7 +139,7 @@ bindsym $mod+Shift+Tab exec rofi -show window -p '[window] '
 bindsym --release $mod+Shift+v exec CM_OUTPUT_CLIP=1 CM_LAUNCHER=rofi clipmenu | xdotool type --file --delay milliseconds 0 -
 bindsym $mod+Shift+slash exec i3-msg -t run_command "$(grep -o "bindsym .*" ~/.config/i3/config | rofi -dmenu | cut -d ' ' -f3-)"
 # Emoji
-bindsym --release $mod+$modAlt+space exec --no-startup-id rofi -show emoji -modi emoji
+bindsym --release $mod+$modAlt+space exec --no-startup-id rofimoji
 
 
 # There also is the (new) i3-dmenu-desktop which only displays applications
