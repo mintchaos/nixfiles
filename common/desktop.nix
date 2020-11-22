@@ -1,11 +1,5 @@
 { pkgs, ... }: {
   system.copySystemConfiguration = true;
-
-  services.gnome3.gnome-keyring.enable = true;
-  security.pam.services.lightdm.enableGnomeKeyring = true;
-  programs.seahorse.enable = true;
-  programs.dconf.enable = true;
-
   nixpkgs.config = {
     allowUnfree = true;
     packageOverrides = pkgs: {
@@ -73,7 +67,11 @@
     # extraModules = [ pkgs.pulseaudio-modules-bt ];
   };
 
-  # TODO: maybe a better home for this
+  services.gnome3.gnome-keyring.enable = true;
+  programs.seahorse.enable = true;
+  programs.dconf.enable = true;
+  security.pam.services.lightdm.enableGnomeKeyring = true;
+
   programs.gnupg.agent = {
     enable = true;
     enableSSHSupport = true;
