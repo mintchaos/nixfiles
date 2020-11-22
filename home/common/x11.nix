@@ -11,15 +11,6 @@
     . ~/.xsession
   '';
 
-  # home.file.".bash_profile".text = ''
-  #   if [[ -f ~/.bashrc ]] ; then
-  #     . ~/.bashrc
-  #   fi
-  #   if [[ ! $DISPLAY && $XDG_VTNR -eq 1 ]]; then
-  #     exec ssh-agent startx
-  #   fi
-  # '';
-
   gtk = {
     enable = true;
     theme = {
@@ -104,13 +95,5 @@
     };
   };
 
-  programs.rofi = {
-    enable = true;
-    font = "DejaVu Sans Mono 14";
-    theme = "Monokai";
-    package = pkgs.rofi.override { plugins = [ pkgs.rofi-emoji ]; };
-    extraConfig = ''
-      rofi.combi-mode: window,drun,calc
-    '';
-  };
+  programs.rofi.enable = true;
 }

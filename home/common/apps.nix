@@ -24,9 +24,9 @@
   home.file.".tmux.conf".source = ../config/tmux.conf;
 
   # Run `gpg-connect-agent reloadagent /bye` after changing to reload config
-  home.file.".gnupg/gpg-agent.conf".text = ''
-    pinentry-program ${pkgs.pinentry}/bin/pinentry
-  '';
+  # home.file.".gnupg/gpg-agent.conf".text = ''
+  #   pinentry-program ${pkgs.pinentry}/bin/pinentry
+  # '';
 
   home.packages = with pkgs; [
     # Apps
