@@ -17,13 +17,14 @@ in {
     enable = true;
     configurationLimit = 8;
     editor = false; # Disable bypassing init
+    consoleMode = "auto";
   };
 
   boot.loader.grub.enable = false; # Use systemd-boot instead
 
   # EFI
   boot.loader.efi.canTouchEfiVariables = true;
-  boot.loader.efi.efiSysMountPoint = "/boot/efi";
+  boot.loader.efi.efiSysMountPoint = "/boot";
 
   # Resume
   # boot.resumeDevice = "/dev/mapper/cryptswap";
@@ -63,7 +64,7 @@ in {
       [ "defaults" "noatime" "compress=lzo" "autodefrag" "subvol=@home" ];
   };
 
-  fileSystems."/boot/efi" = {
+  fileSystems."/boot" = {
     label = "uefi";
     device = disk.efi;
     fsType = "vfat";
