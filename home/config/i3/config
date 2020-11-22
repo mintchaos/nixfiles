@@ -134,7 +134,7 @@ bindsym $mod+Shift+q kill
 bindsym $mod+x [urgent=latest] focus
 
 # rofi
-bindsym --release $mod+space exec rofi -combi-modi window#drun#run -show-icons -show combi -modi combi -display-combi ''
+bindsym --release $mod+space exec rofi -combi-modi window#drun#run -show-icons -show combi -modi combi -display-combi '➡'
 bindsym $mod+Shift+Tab exec rofi -show window -p '[window] '
 bindsym --release $mod+Shift+v exec CM_OUTPUT_CLIP=1 CM_LAUNCHER=rofi clipmenu | xdotool type --file --delay milliseconds 0 -
 bindsym $mod+Shift+slash exec i3-msg -t run_command "$(grep -o "bindsym .*" ~/.config/i3/config | rofi -dmenu | cut -d ' ' -f3-)"
