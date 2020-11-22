@@ -12,9 +12,12 @@
   programs.alacritty = {
     enable = true;
     settings = {
-      colors.primary.background = "#262335";
-      env.TERM =
-        "xterm-256color"; # ssh'ing into old servers with TERM=alacritty is sad
+      window.padding = {
+        x = 5;
+        y = 5;
+      };
+      colors.primary.background = "#241B2F";
+      background_opacity = 0.9;
     };
   };
 
