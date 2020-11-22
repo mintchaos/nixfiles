@@ -19,4 +19,6 @@ in {
     ${i3statusCfg.head}
     ${i3statusCfg.tail}
   '';
+
+  home.packages = with pkgs; [ xf86_input_wacom ];
 }
