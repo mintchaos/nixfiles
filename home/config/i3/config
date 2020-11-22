@@ -74,13 +74,13 @@ bindsym $mod+minus exec $lockcmd
 bindsym $mod+Shift+minus exec systemctl suspend
 
 # Screenshot
-bindsym --release $mod+Print exec ss
-bindsym --release $mod+Shift+Print exec maim -s | xclip -selection clipboard -t "image/png"
-bindsym --release $modAlt+Shift+3 exec flameshot gui
+bindsym --release $hyper+4 exec ss
+bindsym --release $hyper+3 exec maim -s | xclip -selection clipboard -t "image/png"
+bindsym --release $hyper+5 exec flameshot gui
 
 # Scratchpath
 bindsym $mod+Shift+grave move scratchpad
-exec --no-startup-id $term --class "dropdown"
+exec --no-startup-id $term --class "dropdown" -e tmux new-session -A -s scratch
 for_window [instance="dropdown"] move scratchpad, border pixel 2, resize set 80 ppt 50 ppt, move absolute position 300 0
 bindsym $mod+grave [instance="dropdown"] scratchpad show
 bindsym $hyper+grave scratchpad show
