@@ -17,7 +17,11 @@
         y = 5;
       };
       colors.primary.background = "#241B2F";
-      background_opacity = 0.9;
+      background_opacity = 0.95;
+      cursor = {
+        style = "Beam";
+        vi_mode_style = "Block";
+      };
     };
   };
 
@@ -40,6 +44,7 @@
     slack
 
     playerctl
+    qalculate-gtk
 
     # rofi things
     rofi-calc
@@ -51,6 +56,7 @@
     okular
     ghostscript
     gimp
+    krita
     qpdf
     xournal
     zathura

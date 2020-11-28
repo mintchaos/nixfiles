@@ -5,7 +5,7 @@ in {
   # External monitor management
   # programs.autorandr = import ./config/autorandr.nix;
 
-  home.packages = with pkgs; [ blender xf86_input_wacom ];
+  home.packages = with pkgs; [ blender libwacom wacomtablet barrier ];
 
   imports = [ ./common/x11.nix ./common/apps.nix ];
 
