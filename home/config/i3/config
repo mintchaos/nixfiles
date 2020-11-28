@@ -32,8 +32,8 @@ new_window pixel 1
 # On start
 exec --no-startup-id hsetroot -solid '#000000'
 exec --no-startup-id xrdb -merge $HOME/.Xresources # Fix urxvt and friends
-exec --no-startup-id xss-lock -- screenlock # Capture lock events
-exec --no-startup-id xset dpms 300 # Turn off screen after 5min (also locks)
+# exec --no-startup-id xss-lock -- screenlock # Capture lock events
+exec --no-startup-id xset dpms 600 # Turn off screen after 5min (also locks)
 exec --no-startup-id $term
 exec --no-startup-id flameshot
 
@@ -272,13 +272,14 @@ mode "resize" {
 }
 bindsym $mod+r mode "resize"
 
-set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (Shift+s) shutdown
+set $mode_system System (l) lock, (e) logout, (s) suspend, (r) hibernate+reboot, (R) reboot, (Shift+s) shutdown
 mode "$mode_system" {
     # bindsym l exec --no-startup-id i3exit lock, mode "default"
     bindsym e exec --no-startup-id i3-msg exit, mode "default"
     # bindsym h exec --no-startup-id i3exit hibernate, mode "default"
     bindsym s exec --no-startup-id systemctl suspend, mode "default"
-    bindsym r exec --no-startup-id systemctl reboot, mode "default"
+    bindsym r exec --no-startup-id systemctl hibernate, mode "default"
+    bindsym Shift+r exec --no-startup-id systemctl reboot, mode "default"
     bindsym Shift+s exec --no-startup-id systemctl shutdown, mode "default"
 
     # back to normal: Enter or Escape

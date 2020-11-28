@@ -7,24 +7,27 @@
     enable = true;
     layout = "us";
     libinput.enable = true;
+    xkbOptions = "compose:ralt";
     windowManager.i3.enable = true;
     windowManager.i3.package = pkgs.i3-gaps;
     # displayManager.startx.enable = true;
     displayManager.defaultSession = "none+i3"; # We startx in our home.nix
   };
 
+  programs.xss-lock.enable = true;
+
   environment.systemPackages = with pkgs; [
     clipmenu
     clipnotify
-    i3lock
     i3status-rust
     networkmanagerapplet
     pcmanfm
     xclip
     xdotool
     xsel
-    xss-lock
   ];
+
+  systemd.sleep.extraConfig = "HibernateMode=reboot";
 
   #services.clipmenu.enable = true;
   # Based on https://github.com/cdown/clipmenu/blob/develop/init/clipmenud.service
