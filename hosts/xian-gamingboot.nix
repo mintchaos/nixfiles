@@ -63,7 +63,8 @@
 
   hardware.steam-hardware.enable = true; # VR
 
-  services.xserver.videoDrivers = [ "nvidia" ];
+  services.xserver.videoDrivers = [ "nvidiaVulkanBeta" ];
+  # services.xserver.videoDrivers = [ "nouveau" ];
 
   virtualisation.docker = {
     enable = true;

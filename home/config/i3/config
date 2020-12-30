@@ -86,6 +86,9 @@ bindsym $mod+grave [instance="dropdown"] scratchpad show
 bindsym $hyper+grave scratchpad show
 bindsym $hyper+m [title=".?Apple.?Music"] scratchpad show
 
+# Launch steam nicely
+for_window [title=".?Friends.?List" class="Steam"] resize set 310 px 
+
 # Workspaces
 bindsym $mod+$modAlt+Right workspace next
 bindsym $mod+$modAlt+Left workspace prev
