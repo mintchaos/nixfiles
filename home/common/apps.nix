@@ -37,15 +37,17 @@
     i3status-rust
     google-chrome-beta
     firefox-beta-bin
-    epiphany
     discord
-    steam
+    # steam
+    lutris-unwrapped
     vscode
     slack
 
+    pulsemixer
     playerctl
     qalculate-gtk
 
+    ulauncher
     # rofi things
     rofi-calc
     rofimoji
@@ -75,7 +77,7 @@
     go
     nodejs-10_x
     websocat # websocket netcat
-    zeal
+    # zeal # offline docs
     docker
     docker-compose
     google-cloud-sdk
