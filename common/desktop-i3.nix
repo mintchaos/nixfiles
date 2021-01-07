@@ -12,6 +12,8 @@
     windowManager.i3.package = pkgs.i3-gaps;
     # displayManager.startx.enable = true;
     displayManager.defaultSession = "none+i3"; # We startx in our home.nix
+    gdk-pixbuf.modulePackages =
+      [ pkgs.librsvg ]; # this exists so GTK programs can read SVGs.
   };
 
   programs.xss-lock.enable = true;
