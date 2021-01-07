@@ -37,7 +37,6 @@ exec --no-startup-id xset dpms 600 # Turn off screen after 5min (also locks)
 exec --no-startup-id $term
 exec --no-startup-id flameshot
 
-
 # Replaced with systemd service: exec --no-startup-id clipmenud # Clipboard
 # Replaced with services.dunst: exec --no-startup-id dunst # Notifications
 
@@ -60,6 +59,9 @@ bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
 bindsym XF86Display exec ls ~/.screenlayout/* | rofi -dmenu | xargs -r -t sh -c  # Screen mode switcher
 bindsym $mod+XF86Display exec xrandr --auto  # Reset screen
+
+bindsym $hyper+XF86AudioMute exec --no-startup-id alacritty --class "pulsemixer" -e 'pulsemixer'
+for_window [Title="pulsemixer"] floating enable
 
 bindsym $mod+slash exec xdotool key XF86AudioPlay
 bindsym $mod+bracketright exec xdotool key XF86AudioNext
@@ -90,8 +92,8 @@ bindsym $hyper+m [title=".?Apple.?Music"] scratchpad show
 for_window [title=".?Friends.?List" class="Steam"] resize set 310 px 
 
 # Workspaces
-bindsym $mod+$modAlt+Right workspace next
-bindsym $mod+$modAlt+Left workspace prev
+bindsym $mod+$modAlt+l workspace next
+bindsym $mod+$modAlt+h workspace prev
 bindsym $mod+Control+Left move workspace to output left
 bindsym $mod+Control+Right move workspace to output right
 
