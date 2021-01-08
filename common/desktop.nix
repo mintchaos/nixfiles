@@ -4,6 +4,7 @@
     allowUnfree = true;
     packageOverrides = pkgs: {
       neovim = pkgs.neovim.override { vimAlias = true; };
+#      unstable = import <nixos-unstable> { config.allowUnfree = true; };
     };
   };
 
@@ -89,8 +90,13 @@
   xdg.portal.enable =
     true; # xdg portal is used for tunneling permissions to flatpak
   xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
-  hardware.opengl.driSupport32Bit = true;
   hardware.pulseaudio.support32Bit = true;
 
+  hardware.opengl = {
+    enable = true;
+#    package = pkgs.unstable.mesa.drivers;
+    driSupport32Bit = true;
+#    package32 = pkgs.unstable.pkgsi686Linux.mesa.drivers;
+  };
   sound.enable = true;
 }

@@ -13,7 +13,6 @@
   networking.hostName = "the-spine";
   services.dnsmasq.enable = true;
   services.dnsmasq.servers = [ "1.1.1.1" "8.8.8.8" "2001:4860:4860::8844" ];
-  hardware.nvidia.modesetting.enable = true;
 
   services.localtime.enable = true;
 
@@ -63,7 +62,7 @@
 
   hardware.steam-hardware.enable = true; # VR
 
-  services.xserver.videoDrivers = [ "nvidia" ];
+  # services.xserver.videoDrivers = [ "amdgpu" ];
 
   virtualisation.docker = {
     enable = true;
