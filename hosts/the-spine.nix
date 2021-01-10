@@ -6,8 +6,8 @@
   boot.loader.efi.efiSysMountPoint = "/boot/efi";
 
   boot.kernelPackages = pkgs.linuxPackages_latest;
-  boot.blacklistedKernelModules = [ "mei_me" ];
-  boot.initrd.kernelModules = [ ];
+  boot.blacklistedKernelModules = [ "mei_me" "radeon" ];
+  boot.initrd.kernelModules = [ "amdgpu" ];
   boot.extraModulePackages = [ ];
 
   networking.hostName = "the-spine";
@@ -62,7 +62,7 @@
 
   hardware.steam-hardware.enable = true; # VR
 
-  # services.xserver.videoDrivers = [ "amdgpu" ];
+  services.xserver.videoDrivers = [ "amdgpu" ];
 
   virtualisation.docker = {
     enable = true;
