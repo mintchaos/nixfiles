@@ -5,9 +5,19 @@
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.efi.efiSysMountPoint = "/boot/efi";
 
-  boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot.kernelPatches = [{
+    name = "make amd 6x00 work";
+    patch = null;
+    extraConfig = ''
+      DRM_AMD_DC y
+      DRM_AMD_DC_DCN y
+      DRM_AMD_DC_DCN3_0 y
+          '';
+  }];
+
+  boot.kernelPackages = pkgs.pkgs.linuxPackages_latest;
   boot.blacklistedKernelModules = [ "mei_me" "radeon" ];
-  boot.initrd.kernelModules = [ "amdgpu" ];
+  boot.initrd.kernelModules = [ ];
   boot.extraModulePackages = [ ];
 
   networking.hostName = "the-spine";
