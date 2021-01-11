@@ -5,6 +5,7 @@
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.efi.efiSysMountPoint = "/boot/efi";
 
+  # Delete once https://github.com/NixOS/nixpkgs/pull/107400 is in.
   boot.kernelPatches = [{
     name = "make amd 6x00 work";
     patch = null;
