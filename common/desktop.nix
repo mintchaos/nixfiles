@@ -4,7 +4,7 @@
     allowUnfree = true;
     packageOverrides = pkgs: {
       neovim = pkgs.neovim.override { vimAlias = true; };
-#      unstable = import <nixos-unstable> { config.allowUnfree = true; };
+      #      unstable = import <nixos-unstable> { config.allowUnfree = true; };
     };
   };
 
@@ -45,13 +45,12 @@
   fonts.fonts = with pkgs; [
     noto-fonts
     dejavu_fonts
-    terminus
     nerdfonts # Includes font-awesome, material-icons, powerline-fonts
     emojione
     source-sans-pro
   ];
 
-  hardware.video.hidpi.enable = true;
+  hardware.video.hidpi.enable = false;
   i18n = { defaultLocale = "en_US.UTF-8"; };
   console.font = "ter-i32b";
   console.packages = with pkgs; [ terminus_font ];
@@ -68,7 +67,7 @@
     # extraModules = [ pkgs.pulseaudio-modules-bt ];
   };
 
-  services.gnome3.gnome-keyring.enable = true;
+  services.gnome.gnome-keyring.enable = true;
   programs.seahorse.enable = true;
   programs.dconf.enable = true;
   security.pam.services.lightdm.enableGnomeKeyring = true;
@@ -94,9 +93,14 @@
 
   hardware.opengl = {
     enable = true;
-#    package = pkgs.unstable.mesa.drivers;
+    # extraPackages = with pkgs; [ rocm-opencl-icd rocm-opencl-runtime ];
+    #    package = pkgs.unstable.mesa.drivers;
     driSupport32Bit = true;
-#    package32 = pkgs.unstable.pkgsi686Linux.mesa.drivers;
+    #    package32 = pkgs.unstable.pkgsi686Linux.mesa.drivers;
   };
+  hardware.xpadneo.enable = true;
   sound.enable = true;
+
+  users.users.localtimed.group = "localtimed";
+  users.groups.localtimed = { };
 }

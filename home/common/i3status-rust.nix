@@ -10,12 +10,8 @@
 
     [[block]]
     block = "net"
-    device = "wlp2s0"
-    ssid = true
-    ip = true
+    format = "{ip} {graph_down}/{graph_up}"
     interval = 30
-    speed_up = false
-    speed_down = false
 
     [[block]]
     block = "disk_space"
@@ -29,20 +25,11 @@
 
     [[block]]
     block = "memory"
-    display_type = "memory"
-    format_mem = "{Mup}%"
-    format_swap = "{SUp}%"
-    interval = 5
-    clickable = true
-    warning_mem = 80
-    warning_swap = 80
-    critical_mem = 95
-    critical_swap = 95
 
     [[block]]
     block = "cpu"
     interval = 2
-    frequency = true
+    format = "{barchart} {utilization} {frequency}"
 
     [[block]]
     block = "temperature"

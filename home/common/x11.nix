@@ -43,7 +43,15 @@
   # DRI3 freezing on intel
   services.picom = {
     enable = true;
+    experimentalBackends = true;
     backend = "glx";
+    vSync = true;
+    extraOptions = ''
+      glx-no-stencil = true;
+      glx-no-rebindpixmap = true;
+      # noUseDamage = true;
+      xrender-sync-fence = true;
+    '';
   };
 
   services.network-manager-applet.enable = true;
@@ -55,9 +63,9 @@
     #latitude = "43.65";
     #longitude = "-79.38";
     temperature.day = 5700;
-    temperature.night = 3000;
-    brightness.day = "1.0";
-    brightness.night = "0.7";
+    temperature.night = 3500;
+    # brightness.day = "1.0";
+    # brightness.night = "0.95";
   };
 
   services.dunst = {
@@ -95,5 +103,8 @@
     };
   };
 
-  programs.rofi.enable = true;
+  programs.rofi = {
+    enable = true;
+    theme = "/home/xian/.config/rofi/chaos-by-design.rasi";
+  };
 }

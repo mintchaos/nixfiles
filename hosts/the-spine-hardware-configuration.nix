@@ -11,6 +11,7 @@
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-amd" ];
   boot.extraModulePackages = [ ];
+  boot.supportedFilesystems = [ "btrfs" "ntfs" ];
 
   fileSystems."/" = {
     device = "/dev/mapper/cryptroot";
@@ -40,8 +41,14 @@
     fsType = "vfat";
   };
 
+  # fileSystems."/mnt/the-spine-windows" = {
+  #   device = "/dev/device/nvme1n1p2";
+  #   fsType = "ntfs";
+  #   options = [ "rw" "uid=1000" ];
+  # };
+
   swapDevices = [{ device = "/dev/mapper/cryptswap"; }];
 
   # high-resolution display
-  hardware.video.hidpi.enable = lib.mkDefault true;
+  # hardware.video.hidpi.enable = lib.mkDefault true;
 }

@@ -4,12 +4,10 @@
 
 { config, pkgs, ... }:
 
-
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-    ];
+  imports = [ # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+  ];
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
@@ -43,11 +41,10 @@
   services.xserver.enable = true;
   services.xserver.videoDrivers = [ "nvidia" ];
   services.xserver.displayManager.sddm.enable = true;
-  services.xserver.displayManager.defaultSession = "none+i3";  
+  services.xserver.displayManager.defaultSession = "none+i3";
   services.xserver.windowManager.i3.enable = true;
   services.xserver.displayManager.autoLogin.enable = true;
   services.xserver.displayManager.autoLogin.user = "xian";
-
 
   # Configure keymap in X11
   # services.xserver.layout = "us";
@@ -72,33 +69,32 @@
   nixpkgs.config.allowUnfree = true;
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-  environment.systemPackages = with pkgs; [ wget vim
-     firefox
-     vscode
-     epiphany
-     discord
-     alacritty
-git 
-gitAndTools.gh
-steam
-barrier
-docker
-docker-compose
-google-cloud-sdk
+  environment.systemPackages = with pkgs; [
+    wget
+    vim
+    firefox
+    vscode
+    epiphany
+    discord
+    alacritty
+    git
+    gitAndTools.gh
+    steam
+    barrier
+    docker
+    docker-compose
+    google-cloud-sdk
 
     ctags
     curlie
     python3
-    python37Packages.ipython
-    python37Packages.pynvim
+    ipython
     gcc
     go
     nodejs-10_x
-   ];
-
+  ];
 
   virtualisation.docker.enable = true;
-
 
   # steam stuff
   hardware.opengl.driSupport32Bit = true;
@@ -120,8 +116,8 @@ google-cloud-sdk
   services.openssh.enable = true;
 
   # Open ports in the firewall.
-  networking.firewall.allowedTCPPorts = [24800];
-  networking.firewall.allowedUDPPorts = [24800];
+  networking.firewall.allowedTCPPorts = [ 24800 ];
+  networking.firewall.allowedUDPPorts = [ 24800 ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
 

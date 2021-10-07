@@ -60,7 +60,7 @@ bindsym XF86AudioPrev exec playerctl previous
 bindsym XF86Display exec ls ~/.screenlayout/* | rofi -dmenu | xargs -r -t sh -c  # Screen mode switcher
 bindsym $mod+XF86Display exec xrandr --auto  # Reset screen
 
-bindsym $hyper+XF86AudioMute exec --no-startup-id alacritty --class "pulsemixer" -e 'pulsemixer'
+bindsym $hyper+XF86AudioMute exec --no-startup-id alacritty --class "pulsemixe" -e 'pulsemixer'
 for_window [Title="pulsemixer"] floating enable
 
 bindsym $mod+slash exec xdotool key XF86AudioPlay
@@ -86,7 +86,7 @@ exec --no-startup-id $term --class "dropdown" -e tmux new-session -A -s scratch
 for_window [instance="dropdown"] move scratchpad, border pixel 2, resize set 80 ppt 50 ppt, move absolute position 300 0
 bindsym $mod+grave [instance="dropdown"] scratchpad show
 bindsym $hyper+grave scratchpad show
-bindsym $hyper+m [title=".?Apple.?Music"] scratchpad show
+bindsym $hyper+m [instance="spotify"] scratchpad show
 
 # Launch steam nicely
 for_window [title=".?Friends.?List" class="Steam"] resize set 310 px 
@@ -333,6 +333,10 @@ bar {
       # }
 }
 bindsym $mod+b bar mode toggle
+
+# This is to fix mouse jumping, might want to bring it back with multiple
+# displays.
+mouse_warping none
 
 # GAPS STUFF
 # Disable window titlebars entirely

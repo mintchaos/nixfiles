@@ -35,13 +35,14 @@
   home.packages = with pkgs; [
     # Apps
     i3status-rust
-    google-chrome-beta
+    google-chrome
     firefox-beta-bin
     discord
     # steam
     lutris-unwrapped
     vscode
     slack
+    super-productivity
 
     pulsemixer
     playerctl
@@ -55,7 +56,7 @@
 
     # PDF, image mainpulation
     flameshot
-    okular
+    xournalpp
     ghostscript
     gimp
     krita
@@ -71,8 +72,6 @@
     ctags
     curlie
     python3
-    python37Packages.ipython
-    python37Packages.pynvim
     gcc
     go
     nodejs-10_x
@@ -99,6 +98,7 @@
 
     # TODO: Move these to system config?
     maim
+    exa
     bat
     mdcat
     #delta
