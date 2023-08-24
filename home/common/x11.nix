@@ -107,4 +107,20 @@
     enable = true;
     theme = "/home/xian/.config/rofi/chaos-by-design.rasi";
   };
+
+  home.packages = with pkgs; [
+    srandrd # Daemon for detecting hotplug display changes, calls autorandr
+
+
+    # Apps
+    i3status-rust
+    hsetroot # for setting bg in picom (xsetroot doesn't work)
+    xrandr-invert-colors
+    xcwd # cwd of the current x window, tiny C program
+    xorg.xdpyinfo
+    xorg.xev
+    xorg.xkill
+    # Needed for GTK
+    gnome3.dconf
+  ];
 }

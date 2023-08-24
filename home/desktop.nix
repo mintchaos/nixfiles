@@ -7,7 +7,7 @@ in {
 
   home.packages = with pkgs; [ blender libwacom wacomtablet barrier ];
 
-  imports = [ ./common/x11.nix ./common/apps.nix ];
+  imports = [ ./common/x11.nix ./common/common.nix ./common/apps.nix ];
 
   xresources.properties = {
     # Doesn't seem like most things need this, but flatpak electron apps do.
