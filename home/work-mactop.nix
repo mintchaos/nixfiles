@@ -11,11 +11,21 @@
   home.homeDirectory = "/Users/christian.metts";
 
   imports = [ ./common/common.nix ];
+  programs.fish = {
+    enable = true;
+    shellAliases = { ls = "nnn"; };
+    shellInit = ''
+      eval "$(/opt/homebrew/bin/brew shellenv)"
+    '';
+  };
+
+  fonts.fontconfig.enable = true;
 
   home.packages = with pkgs; [
     # work stuff
     kubectl
     yarn
+    tmux
     # (jdk8.overrideAttrs (_: { postPatch = "rm man; ln -s ../zulu-8.jdk/Contents/Home/man man"; }))
     kubernetes-helm
     maven

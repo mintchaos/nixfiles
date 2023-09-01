@@ -33,6 +33,11 @@
     # env/shell
     fishPlugins.foreign-env
 
+    # fonts
+    fira-code
+    ibm-plex
+    cascadia-code
+
     # Progamming
     ctags
     curlie
@@ -40,8 +45,6 @@
     gcc
     go
     nodejs-18_x
-    ruby
-    ngrok
     websocat # websocket netcat
     # zeal # offline docs
 
@@ -55,6 +58,7 @@
 
     # TODO: Move these to system config?
     # maim
+    nnn
     exa
     bat
     mdcat
