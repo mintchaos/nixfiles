@@ -1,0 +1,99 @@
+@define-color foreground #eff0f1;
+@define-color foreground-inactive #7f8c8d;
+@define-color background #000000;
+@define-color background-alt #31363b;
+
+* {
+    /* font-family: Mononoki Nerd Font; */
+    font-size: 14px;
+    padding: 0;
+    margin: 0;
+}
+
+#waybar {
+    color: @foreground;
+    background-color: @background;
+}
+
+#window {
+    margin-left: 1em;
+}
+
+#workpaces {
+    background-color: @background-alt;
+    border-radius: 3px;
+    margin-right: 1em;
+}
+
+#workspaces button {
+    padding-left: 0.3em;
+    padding-right: 0.3em;
+    color: @foreground;
+}
+
+#workspaces button.empty {
+    color: @foreground-inactive;
+}
+
+#workspaces button.focused {
+    background-color: @background-alt;
+    border-radius: 3px;
+}
+#workspaces button.urgent {
+    background-color: #eb4d4b;
+}
+
+.modules-right {
+    background-color: @background-alt;
+    border-radius: 3px 0 0 3px;
+}
+
+.modules-right .module {
+    padding: 0 1.2em;
+    border-right: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+#idle_inhibitor {
+    padding: 0 1.2em 0 0.5em;
+}
+
+#wireplumber,
+#bat,
+#tray,
+#usage,
+#net {
+    background-color: @background-alt;
+    border-radius: 3px;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+    margin-left: 0.3em;
+}
+
+#battery,
+#memory,
+#language,
+#network {
+    margin-right: 0.8em;
+}
+
+#pulseaudio-slider slider {
+    min-height: 0px;
+    min-width: 0px;
+    opacity: 0;
+    background-image: none;
+    border: none;
+    box-shadow: none;
+}
+#pulseaudio-slider trough {
+    min-height: 10px;
+    min-width: 80px;
+    border-radius: 5px;
+    background-color: rgba(100, 100, 100, 0.8);
+    border: none;
+}
+#pulseaudio-slider highlight {
+    min-width: 10px;
+    border-radius: 5px;
+    border: none;
+    background-color: rgba(245, 220, 255, 0.6);
+}

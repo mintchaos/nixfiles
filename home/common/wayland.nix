@@ -110,6 +110,7 @@ in {
 
   programs.waybar = {
     enable = true;
+    style = ../config/waybar.css;
     settings = {
       mainbar = {
         layer = "top";
