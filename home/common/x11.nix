@@ -32,26 +32,27 @@
     # FIXME: Is dbus-launch necessary now that it's part of xsession?
     # windowManager.command = "dbus-launch --exit-with-x11 i3";
 
-    pointerCursor = {
-      name = "Vanilla-DMZ-AA";
-      package = pkgs.vanilla-dmz;
-      size = 32;
-    };
+  };
+
+  home.pointerCursor = {
+    name = "Vanilla-DMZ-AA";
+    package = pkgs.vanilla-dmz;
+    size = 32;
+    x11.enable = true;
   };
 
   # Trying on a compisitor (optional) mainly to reduce tearing and possibly fix
   # DRI3 freezing on intel
   services.picom = {
     enable = true;
-    experimentalBackends = true;
     backend = "glx";
     vSync = true;
-    extraOptions = ''
+    settings = {
       glx-no-stencil = true;
       glx-no-rebindpixmap = true;
       # noUseDamage = true;
       xrender-sync-fence = true;
-    '';
+    };
   };
 
   services.network-manager-applet.enable = true;

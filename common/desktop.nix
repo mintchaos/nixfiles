@@ -33,7 +33,7 @@
     tree
     unzip
     wget
-    nixfmt
+    nixfmt-classic
     nnn
   ];
 
@@ -42,15 +42,11 @@
     export VISUAL=nvim
   '';
 
-  fonts.fonts = with pkgs; [
-    noto-fonts
-    dejavu_fonts
-    nerdfonts # Includes font-awesome, material-icons, powerline-fonts
-    emojione
-    source-sans-pro
-  ];
+  fonts.packages = with pkgs;
+    [ noto-fonts dejavu_fonts emojione source-sans-pro ]
+    ++ builtins.filter lib.attrsets.isDerivation
+    (builtins.attrValues pkgs.nerd-fonts);
 
-  hardware.video.hidpi.enable = false;
   i18n = { defaultLocale = "en_US.UTF-8"; };
   console.font = "ter-i32b";
   console.packages = with pkgs; [ terminus_font ];
@@ -60,14 +56,21 @@
   # networking.firewall.allowedUDPPorts = [];
 
   hardware.sane.enable = true;
-  hardware.pulseaudio = {
+
+  hardware.graphics = {
     enable = true;
-    # Need full for bluetooth support
-    package = pkgs.pulseaudioFull;
-    # extraModules = [ pkgs.pulseaudio-modules-bt ];
+    extraPackages = [
+      pkgs.rocmPackages.clr.icd
+      pkgs.amdvlk
+      # Encoding/decoding acceleration
+      pkgs.libvdpau-va-gl
+      pkgs.vaapiVdpau
+    ];
+    extraPackages32 = [ pkgs.driversi686Linux.amdvlk ];
   };
 
   services.gnome.gnome-keyring.enable = true;
+  services.geoclue2.enable = true;
   programs.seahorse.enable = true;
   programs.dconf.enable = true;
   security.pam.services.lightdm.enableGnomeKeyring = true;
@@ -77,29 +80,35 @@
     enableSSHSupport = true;
   };
 
+  programs.steam.enable = true;
+  # /var/cache library
+
   programs.light.enable = true;
   services.avahi.enable = true;
-  services.avahi.nssmdns = true;
+  services.avahi.nssmdns4 = true;
   services.printing.enable = true;
   services.printing.drivers = [ pkgs.brlaser ];
 
   # Gaming and app wrapping (Steam)
   services.flatpak.enable = true;
   services.accounts-daemon.enable = true; # Required for flatpak+xdg
-  xdg.portal.enable =
-    true; # xdg portal is used for tunneling permissions to flatpak
-  xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
-  hardware.pulseaudio.support32Bit = true;
 
-  hardware.opengl = {
+  services.pipewire = {
     enable = true;
-    # extraPackages = with pkgs; [ rocm-opencl-icd rocm-opencl-runtime ];
-    #    package = pkgs.unstable.mesa.drivers;
-    driSupport32Bit = true;
-    #    package32 = pkgs.unstable.pkgsi686Linux.mesa.drivers;
+    alsa.enable = true;
+    alsa.support32Bit = true; # Not sure if Steam still needs this
+    pulse.enable =
+      true; # Pulse server emulation, useful for running pulseaudio GUIs
   };
+
+  # hardware.opengl = {
+  #   enable = true;
+  #   # extraPackages = with pkgs; [ rocm-opencl-icd rocm-opencl-runtime ];
+  #   #    package = pkgs.unstable.mesa.drivers;
+  #   driSupport32Bit = true;
+  #   #    package32 = pkgs.unstable.pkgsi686Linux.mesa.drivers;
+  # };
   hardware.xpadneo.enable = true;
-  sound.enable = true;
 
   users.users.localtimed.group = "localtimed";
   users.groups.localtimed = { };

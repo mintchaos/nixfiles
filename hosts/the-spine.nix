@@ -23,9 +23,10 @@
 
   networking.hostName = "the-spine";
   services.dnsmasq.enable = true;
-  services.dnsmasq.servers = [ "1.1.1.1" "8.8.8.8" "2001:4860:4860::8844" ];
+  # services.dnsmasq.settings.servers =
+  #   [ "1.1.1.1" "8.8.8.8" "2001:4860:4860::8844" ];
 
-  services.localtime.enable = true;
+  services.localtimed.enable = true;
 
   # ssh
   services.sshd.enable = true;
@@ -45,13 +46,14 @@
     # hashedPassword = let hashedPassword = import ./.hashedPassword.nix; in hashedPassword; # Make with mkpasswd
   };
 
-  imports = [ ./the-spine-hardware-configuration.nix ../common/desktop-i3.nix ];
+  imports =
+    [ ./the-spine-hardware-configuration.nix ../common/desktop-wayland.nix ];
 
   environment.systemPackages = with pkgs; [
     home-manager
 
     # Desktop
-    alsaTools
+    alsa-tools
     arandr
     colord
     dunst
@@ -68,10 +70,11 @@
     gnupg
   ];
 
-  services.xserver.displayManager.autoLogin.enable = true;
-  services.xserver.displayManager.autoLogin.user = "xian";
+  services.displayManager.autoLogin.enable = true;
+  services.displayManager.autoLogin.user = "xian";
 
   hardware.steam-hardware.enable = true; # VR
+  hardware.xone.enable = true;
 
   services.xserver.videoDrivers = [ "amdgpu" ];
 
@@ -88,8 +91,8 @@
     enable = true;
     startWhenNeeded =
       true; # Don't start until socket request comes in to systemd
-    passwordAuthentication = false;
-    challengeResponseAuthentication = false;
+    settings = { PasswordAuthentication = false; };
+    kbdInteractiveAuthentication = false;
   };
 
   console.font =

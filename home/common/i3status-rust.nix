@@ -1,9 +1,10 @@
 {
   head = ''
+    [theme]
     theme = "solarized-dark"
 
     [icons]
-    name = "awesome"
+    icons = "material"
 
     [[block]]
     block = "focused_window"

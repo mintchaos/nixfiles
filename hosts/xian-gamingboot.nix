@@ -40,7 +40,7 @@
     home-manager
 
     # Desktop
-    alsaTools
+    alsa-tools
     arandr
     colord
     dunst

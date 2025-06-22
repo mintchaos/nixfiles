@@ -86,7 +86,7 @@ exec --no-startup-id $term --class "dropdown" -e tmux new-session -A -s scratch
 for_window [instance="dropdown"] move scratchpad, border pixel 2, resize set 80 ppt 50 ppt, move absolute position 300 0
 bindsym $mod+grave [instance="dropdown"] scratchpad show
 bindsym $hyper+grave scratchpad show
-bindsym $hyper+m [instance="spotify"] scratchpad show
+bindsym $hyper+m [title="Cider"] scratchpad show
 
 # Launch steam nicely
 for_window [title=".?Friends.?List" class="Steam"] resize set 310 px 

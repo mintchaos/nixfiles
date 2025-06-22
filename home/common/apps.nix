@@ -17,12 +17,17 @@
         y = 5;
       };
       colors.primary.background = "#241B2F";
-      background_opacity = 0.95;
+      window.opacity = 0.95;
       cursor = {
         style = "Beam";
         vi_mode_style = "Block";
       };
     };
+  };
+  programs.ghostty = {
+    enable = true;
+    installVimSyntax = true;
+    enableFishIntegration = true;
   };
 
   home.file.".tmux.conf".source = ../config/tmux.conf;
@@ -36,13 +41,16 @@
     # Apps
     i3status-rust
     google-chrome
-    firefox-beta-bin
+    firefox
+    # arc-browser // only darwin currently
     discord
     # steam
     lutris-unwrapped
     vscode
-    slack
+    zed-editor
     super-productivity
+    signal-desktop
+    cider-2 # apple music
 
     pulsemixer
     playerctl
@@ -61,9 +69,7 @@
     gimp
     krita
     qpdf
-    xournal
-    zathura
-    colorpicker
+    # zathura
     fontpreview
     #skanlite
     #simple-scan
@@ -74,12 +80,13 @@
     python3
     gcc
     go
-    nodejs-10_x
+    nodejs
     websocat # websocket netcat
+    nixd
     # zeal # offline docs
-    docker
-    docker-compose
-    google-cloud-sdk
+    # docker
+    # docker-compose
+    # google-cloud-sdk
 
     # Programming: Rust
     #latest.rustChannels.nightly.rust
@@ -89,7 +96,7 @@
 
     drive # google drive cli
     obs-studio # Screen recording, stremaing
-    transmission-gtk # Torrents
+    transmission_4-gtk # Torrents
 
     #mplayer  # TODO: Switch to mpc?
     vlc
@@ -98,7 +105,7 @@
 
     # TODO: Move these to system config?
     maim
-    exa
+    eza
     bat
     mdcat
     #delta
@@ -121,6 +128,6 @@
     wally-cli
 
     # Needed for GTK
-    gnome3.dconf
+    # gnome3.dconf
   ];
 }

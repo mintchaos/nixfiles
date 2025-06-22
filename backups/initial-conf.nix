@@ -91,7 +91,7 @@
     ipython
     gcc
     go
-    nodejs-10_x
+    nodejs
   ];
 
   virtualisation.docker.enable = true;

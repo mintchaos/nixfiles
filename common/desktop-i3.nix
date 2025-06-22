@@ -16,7 +16,7 @@
       [ pkgs.librsvg ]; # this exists so GTK programs can read SVGs.
   };
 
-  programs.xss-lock.enable = true;
+  # programs.xss-lock.enable = true;
 
   environment.systemPackages = with pkgs; [
     clipmenu
