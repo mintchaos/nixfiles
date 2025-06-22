@@ -75,7 +75,7 @@ in {
     "${mod}+XF86MonBrightnessDown" = "exec brightness down 5";
     "XF86AudioRaiseVolume" = "exec --no-startup-id pamixer --increase 5";
     "XF86AudioLowerVolume" = "exec --no-startup-id pamixer --decrease 5";
-    "XF86AudioMute" = "exec --no-startup-id pamixer --mute";
+    "XF86AudioMute" = "exec --no-startup-id pamixer --toggle-mute";
     "XF86AudioMicMute" =
       "exec --no-startup-id pamixer --default-source --toggle-mute";
     "XF86AudioPlay" = "exec playerctl play-pause";
