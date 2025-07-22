@@ -34,6 +34,8 @@
     kdePackages.xwaylandvideobridge # Portal for screen sharing
   ];
 
+  # use the command to debug portals
+  # ➤ busctl --user introspect org.freedesktop.portal.Desktop /org/freedesktop/portal/desktop
   xdg.portal = {
     enable = true;
     wlr.enable = true;
