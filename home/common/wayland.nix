@@ -1,6 +1,6 @@
 # Wayland alternative to x11.nix
 # TODO: Add https://github.com/rafaelrc7/wayland-pipewire-idle-inhibit
-{ pkgs, config, lib, pkgs-unstable, ... }:
+{ pkgs, config, lib, ... }:
 let
   sessionVars = {
     # For my fancy bookmark script: home/bin/bookmark
@@ -13,8 +13,6 @@ let
     # Removed: SDL_VIDEODRIVER = "wayland"; # SDL
     # ^ This breaks some games, maybe proton related? - https://www.reddit.com/r/linux_gaming/comments/17lbqdv/baldurs_gate_iii_sound_but_no_display/
     QT_QPA_PLATFORM = "wayland"; # QT
-    XDG_SESSION_DESKTOP = "sway";
-    XDG_CURRENT_DESKTOP = "sway";
     XDG_CACHE_HOME = "${config.home.homeDirectory}/.cache/";
     GDK_PIXBUF_MODULE_FILE =
       "$(ls ${pkgs.librsvg.out}/lib/gdk-pixbuf-*/*/loaders.cache)"; # SVG GTK icons fix? Not sure
@@ -66,6 +64,7 @@ in {
     pamixer
     redshift
     sway-audio-idle-inhibit
+    swaybg
     grim
   ];
 
@@ -116,7 +115,13 @@ in {
         layer = "top";
         position = "bottom";
         height = 30;
-        modules-left = [ "sway/workspaces" "sway/mode" "sway/window" ];
+        modules-left = [
+          "niri/workspaces"
+          "niri/window"
+          "sway/workspaces"
+          "sway/mode"
+          "sway/window"
+        ];
         modules-center = [ "mpris" ];
         modules-right = [
           "pulseaudio/slider"

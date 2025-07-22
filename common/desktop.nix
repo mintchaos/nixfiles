@@ -1,5 +1,4 @@
 { pkgs, ... }: {
-  system.copySystemConfiguration = true;
   nixpkgs.config = {
     allowUnfree = true;
     packageOverrides = pkgs: {
@@ -42,6 +41,8 @@
     export VISUAL=nvim
   '';
 
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+
   fonts.packages = with pkgs;
     [ noto-fonts dejavu_fonts emojione source-sans-pro ]
     ++ builtins.filter lib.attrsets.isDerivation
@@ -73,7 +74,11 @@
   services.geoclue2.enable = true;
   programs.seahorse.enable = true;
   programs.dconf.enable = true;
-  security.pam.services.lightdm.enableGnomeKeyring = true;
+  security.pam.services = {
+    login.enableGnomeKeyring = true;
+    gdm.enableGnomeKeyring = true;
+    lightdm.enableGnomeKeyring = true;
+  };
 
   programs.gnupg.agent = {
     enable = true;

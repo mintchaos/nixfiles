@@ -1,8 +1,6 @@
 { pkgs, ... }:
 
 {
-  nixpkgs.config.allowUnfree = true;
-
   programs.home-manager.enable = true;
   programs.git.delta.enable = true;
   programs.termite = {
@@ -44,6 +42,7 @@
     firefox
     # arc-browser // only darwin currently
     discord
+    discord-canary
     # steam
     lutris-unwrapped
     vscode
@@ -51,6 +50,7 @@
     super-productivity
     signal-desktop
     cider-2 # apple music
+    _1password-gui
 
     pulsemixer
     playerctl

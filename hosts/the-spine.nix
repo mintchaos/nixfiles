@@ -46,9 +46,6 @@
     # hashedPassword = let hashedPassword = import ./.hashedPassword.nix; in hashedPassword; # Make with mkpasswd
   };
 
-  imports =
-    [ ./the-spine-hardware-configuration.nix ../common/desktop-wayland.nix ];
-
   environment.systemPackages = with pkgs; [
     home-manager
 
@@ -70,13 +67,16 @@
     gnupg
   ];
 
-  services.displayManager.autoLogin.enable = true;
-  services.displayManager.autoLogin.user = "xian";
+  services.displayManager.autoLogin = {
+    enable = true;
+    user = "xian";
+  };
 
   hardware.steam-hardware.enable = true; # VR
   hardware.xone.enable = true;
 
   services.xserver.videoDrivers = [ "amdgpu" ];
+  services.input-remapper.enable = true;
 
   virtualisation.docker = {
     enable = true;
