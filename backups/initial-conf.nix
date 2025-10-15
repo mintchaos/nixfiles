@@ -80,7 +80,6 @@
     git
     gitAndTools.gh
     steam
-    barrier
     docker
     docker-compose
     google-cloud-sdk
@@ -130,4 +129,3 @@
   system.stateVersion = "20.09"; # Did you read the comment?
 
 }
-

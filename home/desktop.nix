@@ -5,7 +5,6 @@ in {
   # External monitor management
   # programs.autorandr = import ./config/autorandr.nix;
 
-  home.packages = with pkgs; [ barrier ];
   home.stateVersion = "18.09";
 
   imports = [ ./common/wayland.nix ./common/apps.nix ];

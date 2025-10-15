@@ -117,7 +117,6 @@
     lsof
     #tlp
     hsetroot # for setting bg in picom (xsetroot doesn't work)
-    xrandr-invert-colors
     xcwd # cwd of the current x window, tiny C program
     xorg.xdpyinfo
     xorg.xev

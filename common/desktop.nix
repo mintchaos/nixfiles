@@ -62,12 +62,10 @@
     enable = true;
     extraPackages = [
       pkgs.rocmPackages.clr.icd
-      pkgs.amdvlk
       # Encoding/decoding acceleration
       pkgs.libvdpau-va-gl
       pkgs.vaapiVdpau
     ];
-    extraPackages32 = [ pkgs.driversi686Linux.amdvlk ];
   };
 
   services.gnome.gnome-keyring.enable = true;
