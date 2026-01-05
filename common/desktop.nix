@@ -15,7 +15,6 @@
     dmidecode
     fd
     git
-    gitAndTools.gh
     gnumake
     htop
     inetutils
@@ -44,7 +43,7 @@
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   fonts.packages = with pkgs;
-    [ noto-fonts dejavu_fonts emojione source-sans-pro ]
+    [ noto-fonts dejavu_fonts source-sans-pro ]
     ++ builtins.filter lib.attrsets.isDerivation
     (builtins.attrValues pkgs.nerd-fonts);
 
@@ -64,19 +63,14 @@
       pkgs.rocmPackages.clr.icd
       # Encoding/decoding acceleration
       pkgs.libvdpau-va-gl
-      pkgs.vaapiVdpau
+      pkgs.libva-vdpau-driver
     ];
   };
 
-  services.gnome.gnome-keyring.enable = true;
+  # services.gnome.gnome-keyring.enable = true;
   services.geoclue2.enable = true;
   programs.seahorse.enable = true;
   programs.dconf.enable = true;
-  security.pam.services = {
-    login.enableGnomeKeyring = true;
-    gdm.enableGnomeKeyring = true;
-    lightdm.enableGnomeKeyring = true;
-  };
 
   programs.gnupg.agent = {
     enable = true;

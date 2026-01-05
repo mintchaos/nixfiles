@@ -1,8 +1,11 @@
-{ pkgs, ... }:
+{ pkgs, inputs, ... }:
 
 {
   programs.home-manager.enable = true;
-  programs.git.delta.enable = true;
+  programs.delta = {
+    enable = true;
+    enableGitIntegration = true;
+  };
   programs.termite = {
     enable = true;
     backgroundColor = "#262335";
@@ -36,6 +39,9 @@
   # '';
 
   home.packages = with pkgs; [
+    inputs.opencode.packages.${pkgs.system}.default
+    inputs.opencode.packages.${pkgs.system}.desktop
+
     # Apps
     i3status-rust
     google-chrome
@@ -47,7 +53,6 @@
     lutris-unwrapped
     vscode
     zed-editor
-    super-productivity
     signal-desktop
     cider-2 # apple music
     _1password-gui
@@ -75,12 +80,14 @@
     #simple-scan
 
     # Progamming
+    gh
     ctags
     curlie
     python3
     gcc
     go
     nodejs
+    bun
     websocat # websocket netcat
     nixd
     # zeal # offline docs
@@ -121,7 +128,6 @@
     xorg.xdpyinfo
     xorg.xev
     xorg.xkill
-    pasystray
     whois
 
     wally-cli

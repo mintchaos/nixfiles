@@ -8,6 +8,8 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
     niri.url = "github:sodiboo/niri-flake";
+
+    opencode.url = "github:anomalyco/opencode";
   };
 
   outputs = { self, nixpkgs, home-manager, ... }@inputs: {
@@ -26,6 +28,7 @@
         {
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
+          home-manager.extraSpecialArgs = { inherit inputs; };
 
           home-manager.users.xian = import ./home/desktop.nix;
         }
