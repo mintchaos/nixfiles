@@ -11,13 +11,6 @@ in {
 
   xresources.properties = {
     # Doesn't seem like most things need this, but flatpak electron apps do.
-    # "Xft.dpi" = 163; # 3840x2160 over 27"
   };
 
-  # home.file.".config/i3/config".source = ./config/i3/config;
-  # home.file.".config/i3/status.toml".source = ./config/i3/status.toml;
-  # home.file.".config/i3/status.toml".text = ''
-  #   ${i3statusCfg.head}
-  #   ${i3statusCfg.tail}
-  # '';
 }

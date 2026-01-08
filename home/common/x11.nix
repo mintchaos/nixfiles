@@ -21,7 +21,6 @@
       package = pkgs.tango-icon-theme;
       name = "Tango";
     };
-    gtk3.extraCss = builtins.readFile (./. + "/../config/gtk3/gtk.css");
   };
 
   xsession = {

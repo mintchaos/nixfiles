@@ -52,8 +52,6 @@
   console.packages = with pkgs; [ terminus_font ];
 
   networking.networkmanager.enable = true;
-  # networking.firewall.allowedTCPPorts = [];
-  # networking.firewall.allowedUDPPorts = [];
 
   hardware.sane.enable = true;
 
@@ -67,7 +65,6 @@
     ];
   };
 
-  # services.gnome.gnome-keyring.enable = true;
   services.geoclue2.enable = true;
   programs.seahorse.enable = true;
   programs.dconf.enable = true;
@@ -98,13 +95,6 @@
       true; # Pulse server emulation, useful for running pulseaudio GUIs
   };
 
-  # hardware.opengl = {
-  #   enable = true;
-  #   # extraPackages = with pkgs; [ rocm-opencl-icd rocm-opencl-runtime ];
-  #   #    package = pkgs.unstable.mesa.drivers;
-  #   driSupport32Bit = true;
-  #   #    package32 = pkgs.unstable.pkgsi686Linux.mesa.drivers;
-  # };
   hardware.xpadneo.enable = true;
 
   users.users.localtimed.group = "localtimed";

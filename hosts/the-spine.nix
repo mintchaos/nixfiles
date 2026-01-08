@@ -6,15 +6,6 @@
   boot.loader.efi.efiSysMountPoint = "/boot/efi";
 
   # Delete once https://github.com/NixOS/nixpkgs/pull/107400 is in.
-  # boot.kernelPatches = [{
-  #   name = "make amd 6x00 work";
-  #   patch = null;
-  #   extraConfig = ''
-  #     DRM_AMD_DC y
-  #     DRM_AMD_DC_DCN y
-  #     DRM_AMD_DC_DCN3_0 y
-  #         '';
-  # }];
 
   boot.kernelPackages = pkgs.pkgs.linuxPackages_latest;
   boot.blacklistedKernelModules = [ "mei_me" "radeon" ];
@@ -100,7 +91,6 @@
 
   powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
   # high-resolution display
-  # hardware.video.hidpi.enable = lib.mkDefault true;
 
   system.stateVersion = "20.09"; # Did you read the comment?
 }

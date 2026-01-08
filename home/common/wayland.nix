@@ -31,24 +31,6 @@ in {
     gtk.enable = true;
   };
 
-  #nixpkgs.overlays = [
-  #  (final: prev: {
-  #    # Fails with
-  #    # > meson.build:48:10: ERROR: Subproject "subprojects/wlroots" required but not found.
-  #    sway-unwrapped = pkgs-unstable.sway-unwrapped.overrideAttrs (old: {
-  #      # We use the unstable 0.10 packaged version as it has some fixes we need
-  #      version = "1.9";
-  #      # dbus systray patched version
-  #      # https://github.com/swaywm/sway/pull/8405
-  #      src = pkgs.fetchFromGitHub {
-  #        owner = "swaywm";
-  #        repo = "sway";
-  #        rev = "19661d1853e766f28ac44284383ff2ee49bf53ae"; # v1.9 version of the PR
-  #        hash = "sha256-CDIe7yzWSEZ/2ADtOgife/nkj0idCDqOwP4H+8AFcZc=";
-  #      };
-  #    });
-  #  })
-  #];
 
   home.sessionVariables = sessionVars;
 

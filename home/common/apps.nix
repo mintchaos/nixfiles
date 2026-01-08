@@ -80,6 +80,7 @@
     #simple-scan
 
     # Progamming
+    uvn
     gh
     ctags
     curlie
