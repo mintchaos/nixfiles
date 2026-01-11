@@ -276,7 +276,7 @@ home.file.".config/app/config.toml".text = ''
 
 ### Development Setup
 - Rust development shell available
-- Uses `nixfmt-classic` for Nix formatting
+- Uses `nixfmt` for Nix formatting
 - Git integration with delta
 - VS Code with Nix environment selector
 

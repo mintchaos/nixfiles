@@ -31,7 +31,6 @@ in {
     gtk.enable = true;
   };
 
-
   home.sessionVariables = sessionVars;
 
   home.packages = with pkgs; [
@@ -187,16 +186,10 @@ in {
 
   services.swayidle = {
     enable = true;
-    events = [
-      {
-        event = "before-sleep";
-        command = lockcmd;
-      }
-      {
-        event = "lock";
-        command = lockcmd;
-      }
-    ];
+    events = {
+      "before-sleep" = lockcmd;
+      "lock" = lockcmd;
+    };
     timeouts = [
       # Turn off screen (just before locking)
       {

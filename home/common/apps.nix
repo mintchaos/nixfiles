@@ -39,8 +39,8 @@
   # '';
 
   home.packages = with pkgs; [
-    inputs.opencode.packages.${pkgs.system}.default
-    inputs.opencode.packages.${pkgs.system}.desktop
+    inputs.opencode.packages.${pkgs.stdenv.hostPlatform.system}.default
+    inputs.opencode.packages.${pkgs.stdenv.hostPlatform.system}.desktop
 
     # Apps
     i3status-rust
@@ -80,7 +80,7 @@
     #simple-scan
 
     # Progamming
-    uvn
+    uv
     gh
     ctags
     curlie

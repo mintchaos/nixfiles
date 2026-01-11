@@ -31,7 +31,7 @@
     tree
     unzip
     wget
-    nixfmt-classic
+    nixfmt
     nnn
   ];
 

@@ -83,7 +83,7 @@
     startWhenNeeded =
       true; # Don't start until socket request comes in to systemd
     settings = { PasswordAuthentication = false; };
-    kbdInteractiveAuthentication = false;
+    settings.KbdInteractiveAuthentication = false;
   };
 
   console.font =
