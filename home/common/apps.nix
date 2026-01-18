@@ -80,6 +80,9 @@
     #simple-scan
 
     # Progamming
+    cargo
+    lazygit
+    television
     uv
     gh
     ctags
