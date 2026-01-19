@@ -30,6 +30,9 @@
     installVimSyntax = true;
     enableFishIntegration = true;
   };
+  programs.rclone = {
+    enable = true;
+  };
 
   home.file.".tmux.conf".source = ../config/tmux.conf;
 
