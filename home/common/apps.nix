@@ -79,6 +79,11 @@
     #skanlite
     #simple-scan
 
+    # calculators
+    clac
+    nota
+
+
     # Progamming
     cargo
     lazygit
