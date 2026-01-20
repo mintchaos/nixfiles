@@ -42,6 +42,7 @@
   # '';
 
   home.packages = with pkgs; [
+    bun
     inputs.opencode.packages.${pkgs.stdenv.hostPlatform.system}.default
     inputs.opencode.packages.${pkgs.stdenv.hostPlatform.system}.desktop
 
@@ -98,7 +99,6 @@
     gcc
     go
     nodejs
-    inputs.nixpkgs-bun.legacyPackages.${pkgs.system}.bun
     websocat # websocket netcat
     nixd
     # zeal # offline docs
