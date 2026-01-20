@@ -86,7 +86,6 @@
     clac
     nota
 
-
     # Progamming
     cargo
     lazygit
@@ -99,7 +98,7 @@
     gcc
     go
     nodejs
-    bun
+    inputs.nixpkgs-bun.legacyPackages.${pkgs.system}.bun
     websocat # websocket netcat
     nixd
     # zeal # offline docs
