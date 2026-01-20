@@ -10,6 +10,8 @@
     niri.url = "github:sodiboo/niri-flake";
 
     opencode.url = "github:anomalyco/opencode";
+
+    nixpkgs-bun.url = "github:NixOS/nixpkgs/f665af0cdb70ed27e1bd8f9fdfecaf451260fc55";
   };
 
   outputs =
