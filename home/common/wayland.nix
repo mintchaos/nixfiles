@@ -185,6 +185,7 @@ in
         modules-left = [
         "niri/workspaces"
         "niri/window"
+          # todo: initialize waybar in wm specific file.
           # "sway/workspaces"
           # "sway/mode"
           # "sway/window"
