@@ -69,6 +69,15 @@
     margin-left: 0.3em;
 }
 
+#disk.warning {
+    color: #f0ad4e;
+}
+
+#disk.critical {
+    background-color: #d9534f;
+    color: black;
+}
+
 #battery,
 #memory,
 #language,

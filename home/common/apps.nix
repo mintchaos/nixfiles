@@ -1,6 +1,8 @@
-{ pkgs, inputs, ... }:
-
 {
+  pkgs,
+  inputs,
+  ...
+}: {
   programs.home-manager.enable = true;
   programs.delta = {
     enable = true;
@@ -43,8 +45,7 @@
 
   home.packages = with pkgs; [
     bun
-    inputs.opencode.packages.${pkgs.stdenv.hostPlatform.system}.default
-    inputs.opencode.packages.${pkgs.stdenv.hostPlatform.system}.desktop
+    inputs.opencode-flake.packages.${pkgs.stdenv.hostPlatform.system}.default
 
     # Apps
     i3status-rust

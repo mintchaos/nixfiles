@@ -9,7 +9,7 @@
 
     niri.url = "github:sodiboo/niri-flake";
 
-    opencode.url = "github:anomalyco/opencode";
+    opencode-flake.url = "github:aodhanhayter/opencode-flake";
   };
 
   outputs =

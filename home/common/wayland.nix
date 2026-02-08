@@ -38,9 +38,17 @@ let
       "idle_inhibitor"
       "temperature"
       "cpu"
+      "disk"
       "clock"
       "tray"
     ];
+
+    disk = {
+      states = {
+        "warning" = 80;
+        "critical" = 92;
+      };
+    };
 
     mpris = {
       format = "{player_icon} {status_icon} {dynamic}";
