@@ -1,4 +1,5 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+{
   nixpkgs.config = {
     allowUnfree = true;
     packageOverrides = pkgs: {
@@ -40,20 +41,28 @@
     export VISUAL=nvim
   '';
 
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
 
-  fonts.packages = with pkgs;
-    [ noto-fonts dejavu_fonts source-sans-pro ]
-    ++ builtins.filter lib.attrsets.isDerivation
-    (builtins.attrValues pkgs.nerd-fonts);
+  fonts.packages =
+    with pkgs;
+    [
+      noto-fonts
+      dejavu_fonts
+      source-sans-pro
+    ]
+    ++ builtins.filter lib.attrsets.isDerivation (builtins.attrValues pkgs.nerd-fonts);
 
-  i18n = { defaultLocale = "en_US.UTF-8"; };
+  i18n = {
+    defaultLocale = "en_US.UTF-8";
+  };
   console.font = "ter-i32b";
   console.packages = with pkgs; [ terminus_font ];
+  hardware.sane.enable = true;
 
   networking.networkmanager.enable = true;
-
-  hardware.sane.enable = true;
 
   hardware.graphics = {
     enable = true;
@@ -91,8 +100,7 @@
     enable = true;
     alsa.enable = true;
     alsa.support32Bit = true; # Not sure if Steam still needs this
-    pulse.enable =
-      true; # Pulse server emulation, useful for running pulseaudio GUIs
+    pulse.enable = true; # Pulse server emulation, useful for running pulseaudio GUIs
   };
 
   hardware.xpadneo.enable = true;
