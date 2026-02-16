@@ -45,7 +45,7 @@
 
   home.packages = with pkgs; [
     bun
-    inputs.opencode-flake.packages.${pkgs.stdenv.hostPlatform.system}.default
+    inputs.opencode.packages.${pkgs.stdenv.hostPlatform.system}.default
 
     # Apps
     i3status-rust
@@ -55,6 +55,7 @@
     discord
     discord-canary
     # steam
+    gamescope
     lutris-unwrapped
     vscode
     zed-editor
