@@ -332,3 +332,49 @@ Always run dry-build before applying system changes, especially for boot-related
 - [NixOS Manual](https://nix.dev/manual/nix/2.33/nix-2.33.html)
 - [NixOS Wiki](https://nixos.wiki/)
 - [NixOS Configuration Examples](https://github.com/NixOS/nixos-configurations)
+
+## Available MCP Tools
+
+When working on `.nix` files, use the NixOS MCP tools for package research and configuration:
+
+### `nixos_nix` - Package and Configuration Search
+
+Use this tool to search packages, options, and documentation:
+
+- **Package Search**: Find packages in nixpkgs and other sources
+  ```
+  nixos_nix action=search query=neovim source=nixos
+  ```
+
+- **Package Info**: Get detailed package information
+  ```
+  nixos_nix action=info query=neovim source=nixos
+  ```
+
+- **Options Search**: Find NixOS or Home Manager options
+  ```
+  nixos_nix action=options query=services.postgresql source=nixos
+  nixos_nix action=options query=programs.git source=home-manager
+  ```
+
+- **Available Sources**: nixos, home-manager, darwin, flakes, flakehub, nixvim, wiki, nix-dev, noogle, nixhub
+
+- **Flake Inputs**: Read inputs from the current flake
+  ```
+  nixos_nix action=flake-inputs
+  ```
+
+### `nixos_nix_versions` - Package Version History
+
+Use this to check available package versions:
+
+```
+nixos_nix_versions package=nodejs limit=10
+```
+
+### When to Use These Tools
+
+- **Adding new packages**: Search for exact package names and available versions
+- **Configuring services**: Look up option names and valid values
+- **Updating flakes**: Check flake inputs and available updates
+- **Troubleshooting**: Find documentation and examples for specific modules
