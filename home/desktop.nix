@@ -12,6 +12,7 @@ in
   imports = [
     ./common/wayland.nix
     ./common/apps.nix
+    ./common/niri
   ];
 
   xresources.properties = {

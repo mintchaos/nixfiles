@@ -1,5 +1,9 @@
-{ pkgs, inputs, ... }: {
-  imports = [ ./desktop.nix ];
+{ pkgs, inputs, ... }:
+{
+  imports = [
+    ./desktop.nix
+    inputs.niri.nixosModules.niri
+  ];
 
   # There's something here about binary cache that isn't working for me
   #
@@ -24,7 +28,6 @@
     };
   };
 
-
   environment.systemPackages = with pkgs; [
     wl-clipboard # wl-copy and wl-paste for copy/paste from stdin / stdout
     qt5.qtwayland # for qt
@@ -45,7 +48,9 @@
       pkgs.xdg-desktop-portal-wlr # Backend for wayland roots
     ];
     config = {
-      common = { default = [ "gtk" ]; };
+      common = {
+        default = [ "gtk" ];
+      };
       niri = {
         "org.freedesktop.impl.portal.ScreenCast" = [ "gnome" ];
         "org.freedesktop.impl.portal.Screenshot" = [ "gnome" ];
