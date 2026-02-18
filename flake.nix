@@ -47,9 +47,11 @@
         pkgs = import nixpkgs {
           system = "x86_64-linux";
           config.allowUnfree = true;
+          overlays = [ inputs.niri.overlays.niri ];
         };
         extraSpecialArgs = { inherit inputs; };
         modules = [
+          inputs.niri.homeModules.niri
           ./home/desktop.nix
           {
             home.username = "xian";
