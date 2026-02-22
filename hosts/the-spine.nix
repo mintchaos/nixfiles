@@ -98,8 +98,20 @@
 
   # Firewall bits
   # 24800 is for barrier
-  networking.firewall.allowedTCPPorts = [ 24800 ];
-  networking.firewall.allowedUDPPorts = [ 24800 ];
+  # Steam LAN transfer: TCP 27040 (transfer), UDP 27031-27036 (discovery)
+  networking.firewall.allowedTCPPorts = [
+    24800
+    27040
+  ];
+  networking.firewall.allowedUDPPorts = [
+    24800
+    27031
+    27032
+    27033
+    27034
+    27035
+    27036
+  ];
   networking.firewall.checkReversePath = "loose";
   networking.firewall.trustedInterfaces = [ "tailscale0" ];
   services.openssh = {
