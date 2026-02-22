@@ -4,7 +4,6 @@
   lib,
   ...
 }:
-
 {
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -26,12 +25,12 @@
     "100.100.100.100"
     "8.8.8.8"
     "1.1.1.1"
+    # "2001:4860:4860::8844"
   ];
 
   # Tailscale VPN
   services.tailscale.enable = true;
-  # services.dnsmasq.settings.servers =
-  #   [ "1.1.1.1" "8.8.8.8" "2001:4860:4860::8844" ];
+  services.udisks2.enable = true;
 
   services.localtimed.enable = true;
 

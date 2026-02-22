@@ -5,7 +5,8 @@
   config,
   lib,
   ...
-}: let
+}:
+let
   sessionVars = {
     # For my fancy bookmark script: home/bin/bookmark
     BOOKMARK_DIR = "${config.home.homeDirectory}/remote/bookmarks";
@@ -114,7 +115,8 @@
       };
     };
   };
-in {
+in
+{
   home.pointerCursor = {
     name = "phinger-cursors-light";
     package = pkgs.phinger-cursors;
@@ -166,7 +168,7 @@ in {
     enable = true;
     font = "DejaVu Sans Mono 12";
     theme = "Monokai";
-    package = pkgs.rofi.override {plugins = [pkgs.rofi-emoji];};
+    package = pkgs.rofi.override { plugins = [ pkgs.rofi-emoji ]; };
     extraConfig = {
       combi-mode = "window,drun,calc";
     };
@@ -187,18 +189,16 @@ in {
     enable = true;
     style = ../config/waybar.css;
     settings = {
-      mainbar =
-        waybarCommon
-        // {
-          modules-left = [
-            "niri/workspaces"
-            "niri/window"
-            # todo: initialize waybar in wm specific file.
-            # "sway/workspaces"
-            # "sway/mode"
-            # "sway/window"
-          ];
-        };
+      mainbar = waybarCommon // {
+        modules-left = [
+          "niri/workspaces"
+          "niri/window"
+          # todo: initialize waybar in wm specific file.
+          # "sway/workspaces"
+          # "sway/mode"
+          # "sway/window"
+        ];
+      };
     };
   };
 
@@ -209,6 +209,18 @@ in {
   services.mako.settings.default-timeout = 3000;
   services.cliphist.enable = true;
   services.network-manager-applet.enable = true;
+
+  services.udiskie = {
+    enable = true;
+    automount = true;
+    notify = true;
+    tray = "auto";
+    settings = {
+      program_options = {
+        file_manager = "${pkgs.yazi}/bin/yazi";
+      };
+    };
+  };
 
   services.swayidle = {
     enable = true;
@@ -246,7 +258,7 @@ in {
   # correctly together. It also handles injecting the correct XDG_* variables.
   wayland.windowManager.sway = {
     enable = true;
-    config = import ../config/sway.nix {inherit pkgs lib lockcmd;};
-    extraOptions = ["-Dlegacy-wl-drm"];
+    config = import ../config/sway.nix { inherit pkgs lib lockcmd; };
+    extraOptions = [ "-Dlegacy-wl-drm" ];
   };
 }
