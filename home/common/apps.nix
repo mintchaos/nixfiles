@@ -44,6 +44,7 @@
   # '';
 
   home.packages = with pkgs; [
+    yazi
     bun
     inputs.opencode.packages.${pkgs.stdenv.hostPlatform.system}.default
 
@@ -137,10 +138,6 @@
     lsof
     #tlp
     hsetroot # for setting bg in picom (xsetroot doesn't work)
-    xcwd # cwd of the current x window, tiny C program
-    xorg.xdpyinfo
-    xorg.xev
-    xorg.xkill
     whois
 
     wally-cli
