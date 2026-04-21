@@ -75,6 +75,7 @@
     surfraw
 
     # PDF, image mainpulation
+    pandoc
     flameshot
     xournalpp
     ghostscript

@@ -1,9 +1,8 @@
-{ pkgs, ... }:
-{
+{pkgs, ...}: {
   nixpkgs.config = {
     allowUnfree = true;
     packageOverrides = pkgs: {
-      neovim = pkgs.neovim.override { vimAlias = true; };
+      neovim = pkgs.neovim.override {vimAlias = true;};
       #      unstable = import <nixos-unstable> { config.allowUnfree = true; };
     };
   };
@@ -13,6 +12,7 @@
     acpi
     bind # nslookup etc
     binutils-unwrapped
+    cachix
     dmidecode
     fd
     git
@@ -22,6 +22,7 @@
     lm_sensors
     mkpasswd
     neovim
+    helix
     patchelf
     pciutils
     powertop
@@ -46,8 +47,7 @@
     "flakes"
   ];
 
-  fonts.packages =
-    with pkgs;
+  fonts.packages = with pkgs;
     [
       noto-fonts
       dejavu_fonts
@@ -59,7 +59,7 @@
     defaultLocale = "en_US.UTF-8";
   };
   console.font = "ter-i32b";
-  console.packages = with pkgs; [ terminus_font ];
+  console.packages = with pkgs; [terminus_font];
   hardware.sane.enable = true;
 
   networking.networkmanager.enable = true;
@@ -86,11 +86,10 @@
   programs.steam.enable = true;
   # /var/cache library
 
-  programs.light.enable = true;
   services.avahi.enable = true;
   services.avahi.nssmdns4 = true;
   services.printing.enable = true;
-  services.printing.drivers = [ pkgs.brlaser ];
+  services.printing.drivers = [pkgs.brlaser];
 
   # Gaming and app wrapping (Steam)
   services.flatpak.enable = true;
@@ -106,5 +105,5 @@
   hardware.xpadneo.enable = true;
 
   users.users.localtimed.group = "localtimed";
-  users.groups.localtimed = { };
+  users.groups.localtimed = {};
 }
