@@ -152,6 +152,7 @@ in
       name = "Adwaita-dark";
       package = pkgs.adwaita-icon-theme;
     };
+    gtk4.theme = null;
   };
 
   home.enableNixpkgsReleaseCheck = false;

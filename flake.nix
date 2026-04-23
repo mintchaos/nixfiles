@@ -9,8 +9,6 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
     niri.url = "github:sodiboo/niri-flake";
-
-    opencode.url = "github:anomalyco/opencode";
   };
 
   outputs =

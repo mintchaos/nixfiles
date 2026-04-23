@@ -8,3 +8,4 @@ hardware-configuration.nix
 disk.nix
 *.gz
 *.key
+/docs/gpu-performance-debugging.ipynb

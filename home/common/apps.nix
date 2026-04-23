@@ -46,7 +46,6 @@
   home.packages = with pkgs; [
     yazi
     bun
-    inputs.opencode.packages.${pkgs.stdenv.hostPlatform.system}.default
 
     # Apps
     i3status-rust
