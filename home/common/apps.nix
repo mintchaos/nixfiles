@@ -28,6 +28,7 @@
     };
   };
   programs.ghostty = {
+    package = inputs.ghostty;
     enable = true;
     installVimSyntax = true;
     enableFishIntegration = true;
@@ -46,6 +47,8 @@
   home.packages = with pkgs; [
     yazi
     bun
+    inputs.seance.packages.${pkgs.stdenv.hostPlatform.system}.default
+    warp-terminal
 
     # Apps
     i3status-rust
