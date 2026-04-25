@@ -2,7 +2,8 @@
   pkgs,
   inputs,
   ...
-}: {
+}:
+{
   programs.home-manager.enable = true;
   programs.delta = {
     enable = true;
@@ -28,7 +29,7 @@
     };
   };
   programs.ghostty = {
-    package = inputs.ghostty;
+    package = inputs.ghostty.packages.${pkgs.stdenv.hostPlatform.system}.default;
     enable = true;
     installVimSyntax = true;
     enableFishIntegration = true;
@@ -56,7 +57,6 @@
     firefox
     # arc-browser // only darwin currently
     discord
-    discord-canary
     # steam
     gamescope
     lutris-unwrapped
