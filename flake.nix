@@ -9,7 +9,6 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
     niri.url = "github:sodiboo/niri-flake";
-    ghostty.url = "github:ghostty-org/ghostty";
 
     seance = {
       url = "git+https://github.com/no1msd/seance?submodules=1";

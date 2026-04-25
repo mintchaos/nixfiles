@@ -29,7 +29,6 @@
     };
   };
   programs.ghostty = {
-    package = inputs.ghostty.packages.${pkgs.stdenv.hostPlatform.system}.default;
     enable = true;
     installVimSyntax = true;
     enableFishIntegration = true;
@@ -49,6 +48,7 @@
     yazi
     bun
     inputs.seance.packages.${pkgs.stdenv.hostPlatform.system}.default
+    (lib.lowPrio ghostty)
     warp-terminal
 
     # Apps
