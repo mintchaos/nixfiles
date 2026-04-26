@@ -124,4 +124,11 @@
   # high-resolution display
 
   system.stateVersion = "20.09"; # Did you read the comment?
+
+  environment.etc = {
+    "1password/custom_allowed_browsers" = {
+      text = ".zen-wrapped";
+      mode = "0755";
+    };
+  };
 }

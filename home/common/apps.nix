@@ -1,9 +1,12 @@
 {
   pkgs,
   inputs,
+  nixpkgs-unstable,
   ...
 }:
 {
+  imports = [inputs.zen-browser.homeModules.beta];
+  
   programs.home-manager.enable = true;
   programs.delta = {
     enable = true;
@@ -37,6 +40,39 @@
     enable = true;
   };
 
+  programs.zen-browser = {
+    enable = true;
+    setAsDefaultBrowser = true;
+
+    policies = {
+      DisableAppUpdate = true;
+      DisableTelemetry = true;
+      DisablePocket = true;
+    };
+
+    profiles.default = {
+      settings = {
+        "zen.workspaces.continue-where-left-off" = true;
+        "zen.view.compact.hide-tabbar" = true;
+        "zen.urlbar.behavior" = "float";
+      };
+
+      mods = [
+        "e122b5d9-d385-4bf8-9971-e137809097d0" # No Top Sites
+        "253a3a74-0cc4-47b7-8b82-996a64f030d5" # Floating History
+      ];
+
+      search = {
+        force = true;
+        default = "ddg";
+      };
+    };
+  };
+  programs.zen-browser.nativeMessagingHosts = [
+    pkgs.firefoxpwa
+  ];
+
+
   home.file.".tmux.conf".source = ../config/tmux.conf;
 
   # Run `gpg-connect-agent reloadagent /bye` after changing to reload config
@@ -49,6 +85,7 @@
     bun
     inputs.seance.packages.${pkgs.stdenv.hostPlatform.system}.default
     (lib.lowPrio ghostty)
+
     warp-terminal
 
     # Apps
@@ -61,9 +98,10 @@
     gamescope
     lutris-unwrapped
     vscode
-    zed-editor
+    nixpkgs-unstable.zed-editor
     signal-desktop
     cider-2 # apple music
+    _1password-cli
     _1password-gui
 
     pulsemixer

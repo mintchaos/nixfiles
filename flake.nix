@@ -22,6 +22,14 @@
     seance = {
       url = "git+https://github.com/no1msd/seance?submodules=1";
     };
+
+    zen-browser = {
+      url = "github:0xc000022070/zen-browser-flake";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        home-manager.follows = "home-manager";
+      };
+    };
   };
 
   outputs =
@@ -34,7 +42,13 @@
     {
       nixosConfigurations.the-spine = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
-        specialArgs = { inherit inputs; };
+        specialArgs = { 
+          inherit inputs;
+          nixpkgs-unstable = import inputs.nixpkgs-unstable {
+            system = "x86_64-linux";
+            config.allowUnfree = true; # mirror your stable config if needed
+          };
+        };
         modules = [
           # Import the previous configuration.nix we used,
           # so the old configuration file still takes effect
@@ -60,7 +74,13 @@
           config.allowUnfree = true;
           overlays = [ inputs.niri.overlays.niri ];
         };
-        extraSpecialArgs = { inherit inputs; };
+        extraSpecialArgs = { 
+          inherit inputs; 
+          nixpkgs-unstable = import inputs.nixpkgs-unstable {
+            system = "x86_64-linux";
+            config.allowUnfree = true; # mirror your stable config if needed
+          };
+        };
         modules = [
           inputs.niri.homeModules.niri
           ./home/desktop.nix
