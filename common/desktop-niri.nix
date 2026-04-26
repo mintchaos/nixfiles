@@ -9,7 +9,7 @@
   #
   nixpkgs.overlays = [ inputs.niri.overlays.niri ];
   programs.niri.enable = true;
-  programs.niri.package = pkgs.niri-stable;
+  programs.niri.package = pkgs.niri-unstable;
   environment.variables = {
     XDG_SESSION_DESKTOP = "niri";
     XDG_CURRENT_DESKTOP = "niri";

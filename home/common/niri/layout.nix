@@ -55,9 +55,9 @@
     # Left/right struts keep the next window to the side always visible.
     # Top/bottom struts add outer gaps in addition to layer-shell panels.
     struts = {
-      left = -6;
-      right = -6;
-      top = -6;
+      # left = -6;
+      # right = -6;
+      # top = -6;
     };
   };
 

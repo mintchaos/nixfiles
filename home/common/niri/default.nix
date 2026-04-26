@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, inputs, nixpkgs-unstable, ... }:
 {
   imports = [
     ./spawn.nix
@@ -7,7 +7,20 @@
     ./layout.nix
     ./window-rules.nix
     ./keybinds.nix
+    inputs.dms.homeModules.dank-material-shell
+    inputs.dms.homeModules.niri
   ];
+
+  programs.dank-material-shell = {
+    enable = true;
+    
+    niri = {
+      enableSpawn = true;
+    };
+
+    enableSystemMonitoring = true;
+    dgop.package = inputs.dgop.packages.${pkgs.stdenv.hostPlatform.system}.default;
+  };
 
   programs.niri.settings = {
     # Ask clients to omit client-side decorations if possible.

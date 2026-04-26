@@ -7,6 +7,16 @@
     "Mod+Shift+Slash".action.show-hotkey-overlay = [ ];
 
     # Application launchers
+    "Mod+Space" = {
+      hotkey-overlay.title = "Run DMS launcer";
+      action.spawn = [
+        "dms" 
+        "ipc" 
+        "call" 
+        "spotlight" 
+        "toggle"
+      ];
+    };
     "Mod+T" = {
       hotkey-overlay.title = "Open a Terminal: ghostty";
       action.spawn = "ghostty";
@@ -18,10 +28,6 @@
     "Super+Alt+L" = {
       hotkey-overlay.title = "Lock the Screen: swaylock";
       action.spawn = "swaylock";
-    };
-    "Mod+Space" = {
-      hotkey-overlay.title = "Run an Application: rofi";
-      action.spawn = "rofi -show run -p '$ '";
     };
 
     # Media keys - allow-when-locked makes them work even when session is locked
