@@ -85,7 +85,8 @@
     bun
     inputs.seance.packages.${pkgs.stdenv.hostPlatform.system}.default
     (lib.lowPrio ghostty)
-
+    nixpkgs-unstable.jujutsu
+    nixpkgs-unstable.lazyjj
     warp-terminal
 
     # Apps

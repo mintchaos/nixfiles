@@ -211,6 +211,8 @@ in
   services.cliphist.enable = true;
   services.network-manager-applet.enable = true;
 
+  services.playerctld.enable = true;
+
   services.udiskie = {
     enable = true;
     automount = true;

@@ -1,4 +1,4 @@
-{ pkgs, inputs, nixpkgs-unstable, ... }:
+{ config, pkgs, inputs, nixpkgs-unstable, ... }:
 {
   imports = [
     ./spawn.nix
@@ -9,7 +9,10 @@
     ./keybinds.nix
     inputs.dms.homeModules.dank-material-shell
     inputs.dms.homeModules.niri
+    inputs.cider-mpris.homeModules.cider-mpris
   ];
+  
+  services.cider-mpris.enable = true;
 
   programs.dank-material-shell = {
     enable = true;

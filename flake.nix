@@ -9,6 +9,7 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
     niri.url = "github:sodiboo/niri-flake";
+    cider-mpris.url = "github:mintchaos/cider-mpris";
 
     dms = {
       url = "github:AvengeMedia/DankMaterialShell/stable";
@@ -23,7 +24,7 @@
       url = "git+https://github.com/no1msd/seance?submodules=1";
     };
 
-    zen-browser = {
+    zen-browser = { 
       url = "github:0xc000022070/zen-browser-flake";
       inputs = {
         nixpkgs.follows = "nixpkgs";
