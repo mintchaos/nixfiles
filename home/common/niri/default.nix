@@ -8,6 +8,7 @@
     ./window-rules.nix
     ./keybinds.nix
     inputs.dms.homeModules.dank-material-shell
+    inputs.dms-plugin-registry.modules.default
     inputs.dms.homeModules.niri
     inputs.cider-mpris.homeModules.cider-mpris
   ];
@@ -23,6 +24,12 @@
 
     enableSystemMonitoring = true;
     dgop.package = inputs.dgop.packages.${pkgs.stdenv.hostPlatform.system}.default;
+
+    plugins = {
+      niriWindows.enable = true;
+      calculator.enable = true;
+      musicLyrics.enable = true;
+    };
   };
 
   programs.niri.settings = {

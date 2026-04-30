@@ -470,9 +470,22 @@
         }
       ],
       "centerWidgets": [
-        "music",
-        "clock",
-        "weather"
+        {
+          "id": "clock",
+          "enabled": true
+        },
+        {
+          "id": "weather",
+          "enabled": true
+        },
+        {
+          "id": "music",
+          "enabled": true
+        },
+        {
+          "id": "musicLyrics",
+          "enabled": true
+        }
       ],
       "rightWidgets": [
         {

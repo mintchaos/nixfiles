@@ -17,6 +17,17 @@
         "toggle"
       ];
     };
+    "Mod+Shift+Space" = {
+      hotkey-overlay.title = "DMS Spotlight Query";
+      action.spawn = [
+        "dms"
+        "ipc"
+        "call"
+        "spotlight"
+        "openQuery"
+        "!"
+      ];
+    };
     "Mod+T" = {
       hotkey-overlay.title = "Open a Terminal: ghostty";
       action.spawn = "ghostty";
