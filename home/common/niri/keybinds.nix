@@ -68,6 +68,20 @@
       ];
     };
 
+    # Media playback (routed via playerctld to the last-active player)
+    "XF86AudioPlay" = {
+      allow-when-locked = true;
+      action.spawn = [ "playerctl" "play-pause" ];
+    };
+    "XF86AudioNext" = {
+      allow-when-locked = true;
+      action.spawn = [ "playerctl" "next" ];
+    };
+    "XF86AudioPrev" = {
+      allow-when-locked = true;
+      action.spawn = [ "playerctl" "previous" ];
+    };
+
     "XF86MonBrightnessUp" = {
       allow-when-locked = true;
       action.spawn = [

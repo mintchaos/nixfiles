@@ -302,6 +302,13 @@ home.file.".config/app/config.toml".text = ''
 - Wayland-focused user configurations
 - XDG portal integration for Wayland
 
+#### Niri Keybind Rules
+
+When adding niri keybindings in `programs.niri.settings.binds`:
+- `action.spawn` must be an **array of strings**, not a single string with spaces
+- Each argument is its own element (e.g., `["playerctl" "play-pause"]`, not `"playerctl play-pause"`)
+- Single-word commands with no arguments can be a bare string (e.g., `"ghostty"`)
+
 ### Development Setup
 
 - Rust development shell available
