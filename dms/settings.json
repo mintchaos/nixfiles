@@ -1,12 +1,12 @@
 {
   "currentThemeName": "custom",
   "currentThemeCategory": "registry",
-  "customThemeFile": "/home/xian/.config/DankMaterialShell/themes/peaceAndQuiet/theme.json",
+  "customThemeFile": "/home/xian/.config/DankMaterialShell/themes/catppuccin/theme.json",
   "registryThemeVariants": {
     "rosePine": "dawn",
     "modus": {
       "dark": {
-        "flavor": "vivendi-tinted",
+        "flavor": "vivendi",
         "accent": "purple"
       }
     },
@@ -16,8 +16,8 @@
         "accent": "mauve"
       }
     },
-    "flexoki": "red",
-    "petrichor": "blue",
+    "flexoki": "blue",
+    "petrichor": "pink",
     "peaceAndQuiet": "pink"
   },
   "matugenScheme": "scheme-tonal-spot",
