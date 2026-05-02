@@ -146,13 +146,20 @@ in
     enable = true;
     theme = {
       name = "Adwaita-dark";
-      package = pkgs.adwaita-icon-theme;
+      package = pkgs.gnome-themes-extra;
     };
     iconTheme = {
-      name = "Adwaita-dark";
+      name = "Adwaita";
       package = pkgs.adwaita-icon-theme;
     };
+    # Explicitly null to opt into new home-manager GTK module behavior:
+    # GTK4 settings are managed separately, not inherited from gtk3.
     gtk4.theme = null;
+  };
+
+  qt = {
+    enable = true;
+    platformTheme.name = "gtk";
   };
 
   home.enableNixpkgsReleaseCheck = false;
