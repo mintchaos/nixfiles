@@ -20,7 +20,7 @@
           pencil-gui = pkgs.callPackage ./pencil-gui.nix { inherit version; };
           pencil = pkgs.callPackage ./pencil-cli.nix { version = cli-version; };
         };
-        defaultPackage = self.packages.${system}.pencil;
+        default = self.packages.${system}.pencil;
       }
     );
 }
