@@ -1,4 +1,10 @@
-{ config, pkgs, lib, inputs, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  inputs,
+  ...
+}:
 {
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -33,6 +39,10 @@
   services.sshd.enable = true;
   programs.fish.enable = true;
 
+  nix.settings.trusted-users = [
+    "root"
+    "xian"
+  ];
   users.users.xian = {
     isNormalUser = true;
     home = "/home/xian";
@@ -67,9 +77,6 @@
     maim
     openvpn
     pavucontrol
-    xclip
-    xdotool
-    xsel
 
     # Apps
     gnupg
