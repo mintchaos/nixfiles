@@ -5,8 +5,8 @@
   ...
 }:
 {
-  imports = [inputs.zen-browser.homeModules.beta];
-  
+  imports = [ inputs.zen-browser.homeModules.beta ];
+
   programs.home-manager.enable = true;
   programs.delta = {
     enable = true;
@@ -72,7 +72,6 @@
     pkgs.firefoxpwa
   ];
 
-
   home.file.".tmux.conf".source = ../config/tmux.conf;
 
   # Run `gpg-connect-agent reloadagent /bye` after changing to reload config
@@ -102,8 +101,8 @@
     nixpkgs-unstable.zed-editor
     signal-desktop
     cider-2 # apple music
-    _1password-cli
-    _1password-gui
+    nixpkgs-unstable._1password-cli
+    nixpkgs-unstable._1password-gui
 
     pulsemixer
     playerctl
@@ -124,8 +123,6 @@
     krita
 
     # Design
-    inputs.pencil-dev.packages.${pkgs.stdenv.hostPlatform.system}.pencil
-    inputs.pencil-dev.packages.${pkgs.stdenv.hostPlatform.system}.pencil-gui
     qpdf
     # zathura
     fontpreview
