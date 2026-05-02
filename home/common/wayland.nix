@@ -164,6 +164,17 @@ in
 
   home.enableNixpkgsReleaseCheck = false;
 
+  services.vicinae = {
+    enable = true;
+    systemd = {
+      enable = true;
+      autoStart = true;
+      environment = {
+        USE_LAYER_SHELL = 1;
+      };
+    };
+  };
+
   services.gammastep = {
     enable = true;
     tray = true; # Broken?

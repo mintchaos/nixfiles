@@ -8,24 +8,17 @@
 
     # Application launchers
     "Mod+Space" = {
-      hotkey-overlay.title = "Run DMS launcer";
+      hotkey-overlay.title = "Toggle Vicinae";
       action.spawn = [
-        "dms" 
-        "ipc" 
-        "call" 
-        "spotlight" 
+        "vicinae"
         "toggle"
       ];
     };
     "Mod+Shift+Space" = {
-      hotkey-overlay.title = "DMS Spotlight Query";
+      hotkey-overlay.title = "Vicinae Switch Windows";
       action.spawn = [
-        "dms"
-        "ipc"
-        "call"
-        "spotlight"
-        "openQuery"
-        "!"
+        "vicinae"
+        "vicinae://launch/wm/switch-windows"
       ];
     };
     "Mod+T" = {
@@ -82,15 +75,24 @@
     # Media playback (routed via playerctld to the last-active player)
     "XF86AudioPlay" = {
       allow-when-locked = true;
-      action.spawn = [ "playerctl" "play-pause" ];
+      action.spawn = [
+        "playerctl"
+        "play-pause"
+      ];
     };
     "XF86AudioNext" = {
       allow-when-locked = true;
-      action.spawn = [ "playerctl" "next" ];
+      action.spawn = [
+        "playerctl"
+        "next"
+      ];
     };
     "XF86AudioPrev" = {
       allow-when-locked = true;
-      action.spawn = [ "playerctl" "previous" ];
+      action.spawn = [
+        "playerctl"
+        "previous"
+      ];
     };
 
     "XF86MonBrightnessUp" = {
