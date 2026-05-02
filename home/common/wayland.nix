@@ -27,94 +27,6 @@ let
   };
 
   lockcmd = "${pkgs.swaylock}/bin/swaylock -fF";
-
-  waybarCommon = {
-    layer = "top";
-    position = "bottom";
-    height = 30;
-    # Disabling mpris to see if that fixes the waybar disappearing problem
-    # modules-center = [ "mpris" ];
-    modules-right = [
-      "pulseaudio/slider"
-      "idle_inhibitor"
-      "temperature"
-      "cpu"
-      "disk"
-      "clock"
-      "tray"
-    ];
-
-    disk = {
-      states = {
-        "warning" = 80;
-        "critical" = 92;
-      };
-    };
-
-    mpris = {
-      format = "{player_icon} {status_icon} {dynamic}";
-      player-icons = {
-        "default" = "▶";
-        "cider" = "🎵";
-      };
-      status-icons = {
-        "paused" = "⏸";
-      };
-    };
-
-    cpu = {
-      format = "{icon0}{icon1}{icon2}{icon3}{icon4}{icon5}{icon6}{icon7}";
-      format-icons = [
-        "<span color='#69ff94'>▁</span>" # green
-        "<span color='#2aa9ff'>▂</span>" # blue
-        "<span color='#f8f8f2'>▃</span>" # white
-        "<span color='#f8f8f2'>▄</span>" # white
-        "<span color='#ffffa5'>▅</span>" # yellow
-        "<span color='#ffffa5'>▆</span>" # yellow
-        "<span color='#ff9977'>▇</span>" # orange
-        "<span color='#dd532e'>█</span>" # red
-      ];
-    };
-
-    clock = {
-      format = "{:%I:%M}";
-      format-alt = "{:%A, %B %d, %Y (%R)}";
-      tooltip-format = "<tt><small>{calendar}</small></tt>";
-      calendar = {
-        mode = "year";
-        mode-mon-col = 3;
-        weeks-pos = "right";
-        on-scroll = 1;
-        format = {
-          months = "<span color='#ffead3'><b>{}</b></span>";
-          days = "<span color='#ecc6d9'><b>{}</b></span>";
-          # weeks = "<span color='#99ffdd'><b>W{}</b></span>";
-          weeks = "";
-          weekdays = "<span color='#dddddd'><b>{}</b></span>";
-          today = "<span color='#ffffff'><b><u>{}</u></b></span>";
-        };
-      };
-      actions = {
-        on-click-right = "mode";
-        # on-scroll-up = "tz_up";
-        # on-scroll-down = "tz_down";
-        on-scroll-up = "shift_up";
-        on-scroll-down = "shift_down";
-      };
-    };
-
-    tray = {
-      spacing = 10;
-    };
-
-    idle_inhibitor = {
-      format = "{icon}";
-      format-icons = {
-        activated = "";
-        deactivated = "";
-      };
-    };
-  };
 in
 {
   home.pointerCursor = {
@@ -183,16 +95,6 @@ in
     temperature.night = 3500;
   };
 
-  programs.rofi = {
-    enable = true;
-    font = "DejaVu Sans Mono 12";
-    theme = "Monokai";
-    package = pkgs.rofi.override { plugins = [ pkgs.rofi-emoji ]; };
-    extraConfig = {
-      combi-mode = "window,drun,calc";
-    };
-  };
-
   programs.swaylock = {
     enable = true;
     settings = {
@@ -204,22 +106,6 @@ in
     };
   };
 
-  programs.waybar = {
-    enable = true;
-    style = ../config/waybar.css;
-    settings = {
-      mainbar = waybarCommon // {
-        modules-left = [
-          "niri/workspaces"
-          "niri/window"
-          # todo: initialize waybar in wm specific file.
-          # "sway/workspaces"
-          # "sway/mode"
-          # "sway/window"
-        ];
-      };
-    };
-  };
 
   # The home-assistant services below won't work unless we're also using
   # home-manager's sway module.
