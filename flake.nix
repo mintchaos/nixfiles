@@ -89,7 +89,10 @@
           overlays = [ inputs.niri.overlays.niri ];
         };
         extraSpecialArgs = homeManagerExtraSpecialArgs;
-        modules = [ ./home/desktop.nix ];
+        modules = [
+          inputs.niri.homeModules.niri
+          ./home/desktop.nix
+        ];
       };
     };
 }

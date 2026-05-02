@@ -5,7 +5,10 @@
   home.stateVersion = "24.05";
 
   imports = [
-    inputs.niri.homeModules.niri
+    # NOTE: inputs.niri.homeModules.niri is NOT imported here because
+    # inputs.niri.nixosModules.niri (imported via desktop-niri.nix) already
+    # pushes it via home-manager.sharedModules for the NixOS build path.
+    # The standalone home-manager path adds it in flake.nix.
     inputs.vicinae.homeManagerModules.default
     ./common/wayland.nix
     ./common/apps.nix
