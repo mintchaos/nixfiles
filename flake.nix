@@ -1,6 +1,11 @@
 {
   description = "I... flake here";
 
+  nixConfig = {
+    extra-substituters = [ "https://vicinae.cachix.org" ];
+    extra-trusted-public-keys = [ "vicinae.cachix.org-1:1kDrfienkGHPYbkpNj1mWTr7Fm1+zcenzgTizIcI3oc=" ];
+  };
+
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-25.11";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
@@ -9,6 +14,8 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
     niri.url = "github:sodiboo/niri-flake";
+    vicinae.url = "github:vicinaehq/vicinae";
+
     cider-mpris.url = "github:mintchaos/cider-mpris";
 
     dms = {
@@ -28,15 +35,13 @@
       url = "git+https://github.com/no1msd/seance?submodules=1";
     };
 
-    zen-browser = { 
+    zen-browser = {
       url = "github:0xc000022070/zen-browser-flake";
       inputs = {
         nixpkgs.follows = "nixpkgs";
         home-manager.follows = "home-manager";
       };
     };
-
-    pencil-dev.url = "path:custom-flakes/pencil-dev";
   };
 
   outputs =
@@ -46,30 +51,32 @@
       home-manager,
       ...
     }@inputs:
+    let
+      system = "x86_64-linux";
+
+      nixpkgs-unstable = import inputs.nixpkgs-unstable {
+        inherit system;
+        config.allowUnfree = true;
+      };
+
+      homeManagerExtraSpecialArgs = {
+        inherit inputs nixpkgs-unstable;
+      };
+    in
     {
       nixosConfigurations.the-spine = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        specialArgs = { 
-          inherit inputs;
-          nixpkgs-unstable = import inputs.nixpkgs-unstable {
-            system = "x86_64-linux";
-            config.allowUnfree = true; # mirror your stable config if needed
-          };
-        };
+        inherit system;
+        specialArgs = { inherit inputs nixpkgs-unstable; };
         modules = [
-          # Import the previous configuration.nix we used,
-          # so the old configuration file still takes effect
           ./common/desktop-niri.nix
           ./hosts/the-spine.nix
           ./hosts/the-spine-hardware-configuration.nix
-          # ./common/desktop-wayland.nix
 
           home-manager.nixosModules.home-manager
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home-manager.extraSpecialArgs = { inherit inputs; };
-
+            home-manager.extraSpecialArgs = homeManagerExtraSpecialArgs;
             home-manager.users.xian = import ./home/desktop.nix;
           }
         ];
@@ -77,25 +84,12 @@
 
       homeConfigurations."xian@the-spine" = home-manager.lib.homeManagerConfiguration {
         pkgs = import nixpkgs {
-          system = "x86_64-linux";
+          inherit system;
           config.allowUnfree = true;
           overlays = [ inputs.niri.overlays.niri ];
         };
-        extraSpecialArgs = { 
-          inherit inputs; 
-          nixpkgs-unstable = import inputs.nixpkgs-unstable {
-            system = "x86_64-linux";
-            config.allowUnfree = true; # mirror your stable config if needed
-          };
-        };
-        modules = [
-          inputs.niri.homeModules.niri
-          ./home/desktop.nix
-          {
-            home.username = "xian";
-            home.homeDirectory = "/home/xian";
-          }
-        ];
+        extraSpecialArgs = homeManagerExtraSpecialArgs;
+        modules = [ ./home/desktop.nix ];
       };
     };
 }
