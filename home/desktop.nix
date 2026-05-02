@@ -1,8 +1,4 @@
 { pkgs, inputs, ... }:
-
-let
-  i3statusCfg = import ./common/i3status-rust.nix;
-in
 {
   home.username = "xian";
   home.homeDirectory = "/home/xian";
