@@ -36,7 +36,7 @@
       };
     };
 
-    pencil-dev.url = "git+file:///home/xian/repos/nixfiles?dir=custom-flakes/pencil-dev";
+    pencil-dev.url = "path:custom-flakes/pencil-dev";
   };
 
   outputs =

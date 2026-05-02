@@ -324,19 +324,14 @@
         "nixpkgs": "nixpkgs_4"
       },
       "locked": {
-        "dir": "custom-flakes/pencil-dev",
-        "dirtyRev": "fa4b5d04a49a5ee6f593192608b5a6e0ab27f79e-dirty",
-        "dirtyShortRev": "fa4b5d0-dirty",
-        "lastModified": 1777703006,
-        "narHash": "sha256-hFAo7rzDYnpVxQctTM6DU7+ZXcrGlAwwiRoA/931Sw8=",
-        "type": "git",
-        "url": "file:///home/xian/repos/nixfiles"
+        "path": "custom-flakes/pencil-dev",
+        "type": "path"
       },
       "original": {
-        "dir": "custom-flakes/pencil-dev",
-        "type": "git",
-        "url": "file:///home/xian/repos/nixfiles"
-      }
+        "path": "custom-flakes/pencil-dev",
+        "type": "path"
+      },
+      "parent": []
     },
     "quickshell": {
       "inputs": {

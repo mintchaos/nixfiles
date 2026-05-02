@@ -1,4 +1,5 @@
-/.*
+.vscode
+.pi/extensions/guardrails*
 !/.opencode
 /opencode/node_modules
 /nix
