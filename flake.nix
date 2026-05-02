@@ -27,6 +27,7 @@
     dms = {
       url = "github:AvengeMedia/DankMaterialShell/stable";
       inputs.nixpkgs.follows = "nixpkgs";
+      inputs.quickshell.url = "git+https://git.outfoxxed.me/quickshell/quickshell";
     };
     dms-plugin-registry = {
       url = "github:AvengeMedia/dms-plugin-registry";
