@@ -122,6 +122,10 @@
     ghostscript
     gimp
     krita
+
+    # Design
+    inputs.pencil-dev.packages.${pkgs.stdenv.hostPlatform.system}.pencil
+    inputs.pencil-dev.packages.${pkgs.stdenv.hostPlatform.system}.pencil-gui
     qpdf
     # zathura
     fontpreview

@@ -35,6 +35,8 @@
         home-manager.follows = "home-manager";
       };
     };
+
+    pencil-dev.url = "git+file:///home/xian/repos/nixfiles?dir=custom-flakes/pencil-dev";
   };
 
   outputs =
