@@ -23,6 +23,7 @@ buildNpmPackage {
 
   postInstall = ''
     mkdir -p $out/share/doc/pencil
+    chmod +x $out/lib/node_modules/@pencil.dev/cli/dist/index.cjs
     ln -sf $out/lib/node_modules/@pencil.dev/cli/dist/index.cjs $out/bin/pencil
     cp $out/lib/node_modules/@pencil.dev/cli/SKILL.md $out/share/doc/pencil/SKILL.md
   '';
