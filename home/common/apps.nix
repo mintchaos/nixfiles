@@ -184,6 +184,7 @@
     whois
 
     wally-cli
+    nh
 
     # Needed for GTK
     # gnome3.dconf
