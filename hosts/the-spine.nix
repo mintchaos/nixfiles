@@ -128,6 +128,14 @@
   console.font = lib.mkForce "${pkgs.terminus_font}/share/consolefonts/ter-u16n.psf.gz";
 
   powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
+
+  # When sleep is triggered via systemd's Sleep() DBus method (used by vicinae's
+  # "Sleep" power menu option), it first suspends to RAM. If the system stays
+  # suspended for this duration, it will wake and hibernate to disk instead.
+  # The default (when unset) is 2 hours.
+  systemd.sleep.extraConfig = ''
+    HibernateDelaySec=6h
+  '';
   # high-resolution display
 
   system.stateVersion = "20.09"; # Did you read the comment?
