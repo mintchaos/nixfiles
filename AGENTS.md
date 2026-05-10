@@ -12,103 +12,42 @@ This is a personal NixOS system configuration repository using Nix flakes. The r
 - Wayland-focused desktop environments (Niri, i3, Sway)
 - Full disk encryption with LUKS1
 - Home-manager integration for user configurations
-- Hardware-specific optimizations for ThinkPad X1 Carbon
 
 ## Build and Management Commands
 
-### System Configuration
+Use `nh` for all builds. Run `nh --help`, `nh os --help`, or `nh home --help` for full options.
+Standard `nixos-rebuild` and `home-manager` are still available if needed.
+
+### System
 
 ```bash
-# Build and switch to new configuration (primary command)
-sudo nixos-rebuild switch --flake .
-
-# Dry-run build to test changes without applying
-sudo nixos-rebuild dry-build --flake .
-
-# Build and switch with upgrade flag
-sudo nixos-rebuild switch --flake . --upgrade
-
-# Build configuration (no switch)
-sudo nixos-rebuild build --flake .
-
-# Test configuration (doesn't persist on reboot)
-sudo nixos-rebuild test --flake .
-
-# Build specific host configuration
-sudo nixos-rebuild switch --flake .#the-spine
+nh os switch      # build and activate, make boot default
+nh os boot        # build and set as boot default (no activation)
+nh os test        # build and activate (doesn't persist on reboot)
+nh os build       # build only, don't activate
 ```
 
 ### Home Manager
 
 ```bash
-# Switch home-manager configuration using flakes
-home-manager switch --flake .
-
-# Build home-manager configuration using flakes
-home-manager build --flake .
-
-# Switch specific user configuration
-home-manager switch --flake .#xian@the-spine
-
-# Expire old generations (cleanup)
-home-manager expire-generations "-7 days"
+nh home switch .  # build and activate
+nh home build .   # build only
 ```
 
-### Package Management
+### Flake Management
 
 ```bash
-# Update flake inputs
-nix flake update
-
-# Update all packages (system + user + flatpak)
-make update
-
-# Check for outdated packages
-make outdated
-
-# Clean old garbage
-make clean
-
-# Update specific flake input
-nix flake update nixpkgs
+nix flake update          # update all flake inputs
+nix flake update nixpkgs  # update specific input
+nix flake check           # validate flake syntax
+nix flake show            # show flake outputs
+nix flake metadata        # show flake metadata
 ```
 
-### Using Makefile
+### Cleanup
 
 ```bash
-# Full system update (system + user + flatpak)
-make update
-
-# Check for outdated packages
-make outdated
-
-# Clean old generations
-make clean
-
-# Generate password hash
-make password
-
-# Generate configuration for specific host
-make config HOST=the-spine
-```
-
-### Testing and Validation
-
-```bash
-# Test flake configuration syntax
-nix flake check
-
-# Validate flake outputs
-nix flake show
-
-# List flake outputs
-nix flake metadata
-
-# Dry-run build with upgrade
-sudo nixos-rebuild dry-build --flake . --upgrade
-
-# Build specific configuration without switching
-nix build .#nixosConfigurations.the-spine.config.system.build.toplevel
+nh clean all    # clean all profiles (replaces nix-collect-garbage + home-manager expire-generations)
 ```
 
 ## Code Style Guidelines
@@ -274,17 +213,17 @@ home.file.".config/app/config.toml".text = ''
 
 ### Common Issues
 
-- **Build failures**: Check `nixos-rebuild dry-build` first
+- **Build failures**: Try `nh os build` (dry-run without activating)
 - **Missing inputs**: Run `nix flake update`
 - **Hardware issues**: Check hardware-specific configurations
 - **Permission errors**: Ensure proper file permissions for security files
 
 ### Debugging
 
-- Use `nixos-rebuild build --show-trace` for detailed errors
+- Use `nh os build -v` for verbose build output
 - Check `/nix/var/log/nixos/` for build logs
 - Use `nix flake check` to validate flake structure
-- Test with `nixos-rebuild test` before switching
+- Test with `nh os test` before switching
 
 ## Repository-Specific Notes
 
@@ -318,18 +257,16 @@ When adding niri keybindings in `programs.niri.settings.binds`:
 
 ### Hardware Optimizations
 
-- ThinkPad X1 Carbon specific configurations
 - AMD GPU support with ROCm
 - Xbox controller support with xone
-- Power management optimizations
 
 ## Testing Strategy
 
 Since this is a system configuration repository, testing involves:
 
 1. **Syntax validation**: `nix flake check`
-2. **Dry-run builds**: `sudo nixos-rebuild dry-build --flake`
-3. **Test configurations**: `sudo nixos-rebuild test --flake`
+2. **Dry-run builds**: `nh os build`
+3. **Test configurations**: `nh os test`
 4. **Manual verification**: Check system functionality after changes
 
 Always run dry-build before applying system changes, especially for boot-related configurations.
@@ -340,48 +277,4 @@ Always run dry-build before applying system changes, especially for boot-related
 - [NixOS Wiki](https://nixos.wiki/)
 - [NixOS Configuration Examples](https://github.com/NixOS/nixos-configurations)
 
-## Available MCP Tools
 
-When working on `.nix` files, use the NixOS MCP tools for package research and configuration:
-
-### `nixos_nix` - Package and Configuration Search
-
-Use this tool to search packages, options, and documentation:
-
-- **Package Search**: Find packages in nixpkgs and other sources
-  ```
-  nixos_nix action=search query=neovim source=nixos
-  ```
-
-- **Package Info**: Get detailed package information
-  ```
-  nixos_nix action=info query=neovim source=nixos
-  ```
-
-- **Options Search**: Find NixOS or Home Manager options
-  ```
-  nixos_nix action=options query=services.postgresql source=nixos
-  nixos_nix action=options query=programs.git source=home-manager
-  ```
-
-- **Available Sources**: nixos, home-manager, darwin, flakes, flakehub, nixvim, wiki, nix-dev, noogle, nixhub
-
-- **Flake Inputs**: Read inputs from the current flake
-  ```
-  nixos_nix action=flake-inputs
-  ```
-
-### `nixos_nix_versions` - Package Version History
-
-Use this to check available package versions:
-
-```
-nixos_nix_versions package=nodejs limit=10
-```
-
-### When to Use These Tools
-
-- **Adding new packages**: Search for exact package names and available versions
-- **Configuring services**: Look up option names and valid values
-- **Updating flakes**: Check flake inputs and available updates
-- **Troubleshooting**: Find documentation and examples for specific modules
