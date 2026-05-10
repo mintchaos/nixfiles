@@ -86,6 +86,8 @@
     (lib.lowPrio ghostty)
     nixpkgs-unstable.jujutsu
     nixpkgs-unstable.lazyjj
+    nixpkgs-unstable.jjui
+    nixpkgs-unstable.nono
     warp-terminal
 
     # Apps
