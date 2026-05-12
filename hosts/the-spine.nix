@@ -133,9 +133,9 @@
   # "Sleep" power menu option), it first suspends to RAM. If the system stays
   # suspended for this duration, it will wake and hibernate to disk instead.
   # The default (when unset) is 2 hours.
-  systemd.sleep.settings.Sleep = {
-    HibernateDelaySec = "6h";
-  };
+  systemd.sleep.extraConfig = ''
+    HibernateDelaySec=6h
+  '';
   # high-resolution display
 
   system.stateVersion = "20.09"; # Did you read the comment?
