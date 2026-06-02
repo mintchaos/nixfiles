@@ -106,7 +106,6 @@ in
     };
   };
 
-
   # The home-assistant services below won't work unless we're also using
   # home-manager's sway module.
 
@@ -131,16 +130,10 @@ in
 
   services.swayidle = {
     enable = true;
-    events = [
-      {
-        event = "before-sleep";
-        command = lockcmd;
-      }
-      {
-        event = "lock";
-        command = lockcmd;
-      }
-    ];
+    events = {
+      before-sleep = lockcmd;
+      lock = lockcmd;
+    };
     timeouts = [
       # Turn off screen (just before locking)
       {

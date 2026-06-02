@@ -12,10 +12,6 @@
     enable = true;
     enableGitIntegration = true;
   };
-  programs.termite = {
-    enable = true;
-    backgroundColor = "#262335";
-  };
   programs.alacritty = {
     enable = true;
     settings = {

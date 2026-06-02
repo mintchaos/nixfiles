@@ -1,4 +1,10 @@
-{ config, pkgs, inputs, nixpkgs-unstable, ... }:
+{
+  config,
+  pkgs,
+  inputs,
+  nixpkgs-unstable,
+  ...
+}:
 {
   imports = [
     ./spawn.nix
@@ -12,12 +18,15 @@
     inputs.dms.homeModules.niri
     inputs.cider-mpris.homeModules.cider-mpris
   ];
-  
-  services.cider-mpris.enable = true;
+
+  services.cider-mpris = {
+    enable = true;
+    package = inputs.cider-mpris.packages.${pkgs.stdenv.hostPlatform.system}.default;
+  };
 
   programs.dank-material-shell = {
     enable = true;
-    
+
     niri = {
       enableSpawn = true;
     };

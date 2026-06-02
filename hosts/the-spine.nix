@@ -22,7 +22,7 @@
 
   networking.hostName = "the-spine";
   services.dnsmasq.enable = true;
-  services.dnsmasq.servers = [
+  services.dnsmasq.settings.server = [
     "100.100.100.100"
     "8.8.8.8"
     "1.1.1.1"
@@ -133,9 +133,9 @@
   # "Sleep" power menu option), it first suspends to RAM. If the system stays
   # suspended for this duration, it will wake and hibernate to disk instead.
   # The default (when unset) is 2 hours.
-  systemd.sleep.extraConfig = ''
-    HibernateDelaySec=6h
-  '';
+  systemd.sleep.settings.Sleep = {
+    HibernateDelaySec = "6h";
+  };
   # high-resolution display
 
   system.stateVersion = "20.09"; # Did you read the comment?
