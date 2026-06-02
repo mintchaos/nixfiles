@@ -176,6 +176,7 @@
     file
     fzf
     gotop
+    fastfetch
     jq
     powerstat
     lsof
