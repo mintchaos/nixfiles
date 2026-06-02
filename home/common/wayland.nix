@@ -131,10 +131,16 @@ in
 
   services.swayidle = {
     enable = true;
-    events = {
-      "before-sleep" = lockcmd;
-      "lock" = lockcmd;
-    };
+    events = [
+      {
+        event = "before-sleep";
+        command = lockcmd;
+      }
+      {
+        event = "lock";
+        command = lockcmd;
+      }
+    ];
     timeouts = [
       # Turn off screen (just before locking)
       {

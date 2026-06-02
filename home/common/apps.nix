@@ -89,6 +89,7 @@
     nixpkgs-unstable.jjui
     nixpkgs-unstable.nono
     warp-terminal
+    nixpkgs-unstable.beads
 
     # Apps
     i3status-rust
@@ -98,7 +99,6 @@
     discord
     # steam
     gamescope
-    lutris-unwrapped
     vscode
     nixpkgs-unstable.zed-editor
     signal-desktop
