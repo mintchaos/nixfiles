@@ -65,7 +65,9 @@
     };
   };
   programs.zen-browser.nativeMessagingHosts = [
-    pkgs.firefoxpwa
+    # The native host package provides the manifest Zen needs; the wrapped
+    # browser package expects a Firefox runtime layout this package does not use.
+    pkgs.firefoxpwa-unwrapped
   ];
 
   home.file.".tmux.conf".source = ../config/tmux.conf;
