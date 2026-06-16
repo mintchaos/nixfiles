@@ -91,6 +91,7 @@
   hardware.xone.enable = true;
 
   services.xserver.videoDrivers = [ "amdgpu" ];
+  services.lact.enable = true;
   services.input-remapper.enable = true;
 
   virtualisation.docker = {
