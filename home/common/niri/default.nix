@@ -14,7 +14,7 @@
     ./window-rules.nix
     ./keybinds.nix
     inputs.dms.homeModules.dank-material-shell
-    inputs.dms-plugin-registry.modules.default
+    inputs.dms-plugin-registry.homeModules.default
     inputs.dms.homeModules.niri
     inputs.cider-mpris.homeModules.cider-mpris
   ];
