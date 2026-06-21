@@ -146,6 +146,7 @@
     go
     nodejs
     websocat # websocket netcat
+    bubblewrap
     nixd
     # zeal # offline docs
     # docker
