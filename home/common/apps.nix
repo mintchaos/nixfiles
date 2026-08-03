@@ -5,7 +5,10 @@
   ...
 }:
 {
-  imports = [ inputs.zen-browser.homeModules.beta ];
+  imports = [
+    inputs.zen-browser.homeModules.beta
+    inputs.codex-desktop-linux.homeManagerModules.default
+  ];
 
   programs.home-manager.enable = true;
   programs.delta = {
@@ -69,6 +72,26 @@
     # browser package expects a Firefox runtime layout this package does not use.
     pkgs.firefoxpwa-unwrapped
   ];
+
+  programs.codexDesktopLinux = {
+    enable = true;
+    cliPackage = inputs.codex-cli-nix.packages.${pkgs.stdenv.hostPlatform.system}.default;
+    remoteControl = {
+      enable = true;
+      package = inputs.codex-cli-nix.packages.${pkgs.stdenv.hostPlatform.system}.default;
+    };
+    remoteMobileControl.enable = true;
+    linuxFeatures = [
+      "appshots"
+      "directory-only-working-tree-watch"
+      "frameless-titlebar"
+      "mcp-helper-reaper"
+      "node-repl-reaper"
+      "open-target-discovery"
+      "persistent-status-panel"
+      "remote-mobile-control"
+    ];
+  };
 
   home.file.".tmux.conf".source = ../config/tmux.conf;
 
