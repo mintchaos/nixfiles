@@ -5,10 +5,12 @@
     extra-substituters = [
       "https://vicinae.cachix.org"
       "https://niri.cachix.org"
+      "https://codex-cli.cachix.org"
     ];
     extra-trusted-public-keys = [
       "vicinae.cachix.org-1:1kDrfienkGHPYbkpNj1mWTr7Fm1+zcenzgTizIcI3oc="
       "niri.cachix.org-1:Wv0OmO7PsuocRKzfDoJ3mulSl7Z6oezYhGhR+3W2964="
+      "codex-cli.cachix.org-1:1Br3H1hHoRYG22n//cGKJOk3cQXgYobUel6O8DgSing="
     ];
   };
 
@@ -48,6 +50,12 @@
         nixpkgs.follows = "nixpkgs";
         home-manager.follows = "home-manager";
       };
+    };
+
+    codex-desktop-linux.url = "github:ilysenko/codex-desktop-linux/main";
+    codex-cli-nix = {
+      url = "github:sadjow/codex-cli-nix/main";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
