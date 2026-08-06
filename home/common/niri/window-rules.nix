@@ -24,6 +24,11 @@
       ];
       open-floating = true;
     }
+    # The Artisan of Glimmith: keep the game windowed for keyboard input, then fullscreen it in Niri.
+    {
+      matches = [ { app-id = "steam_app_4160210"; } ];
+      open-fullscreen = true;
+    }
     {
       matches = [ { app-id = "steam_app_1808500"; } ];
       open-fullscreen = true;
