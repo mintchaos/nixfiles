@@ -76,10 +76,6 @@
   programs.codexDesktopLinux = {
     enable = true;
     cliPackage = inputs.codex-cli-nix.packages.${pkgs.stdenv.hostPlatform.system}.default;
-    remoteControl = {
-      enable = true;
-      package = inputs.codex-cli-nix.packages.${pkgs.stdenv.hostPlatform.system}.default;
-    };
     remoteMobileControl.enable = true;
     linuxFeatures = [
       "appshots"
