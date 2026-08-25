@@ -83,6 +83,8 @@
     enableSSHSupport = true;
   };
 
+  boot.kernelModules = [ "ntsync" ];
+
   programs.steam.enable = true;
   # /var/cache library
 
