@@ -32,7 +32,6 @@
     };
 
     enableSystemMonitoring = true;
-    dgop.package = inputs.dgop.packages.${pkgs.stdenv.hostPlatform.system}.default;
 
     plugins = {
       niriWindows.enable = true;
