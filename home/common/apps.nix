@@ -135,6 +135,7 @@
 
     # PDF, image mainpulation
     pandoc
+    epubcheck
     flameshot
     xournalpp
     ghostscript
