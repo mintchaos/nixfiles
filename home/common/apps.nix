@@ -120,8 +120,6 @@
     nixpkgs-unstable.zed-editor
     signal-desktop
     cider-2 # apple music
-    nixpkgs-unstable._1password-cli
-    nixpkgs-unstable._1password-gui
 
     pulsemixer
     playerctl

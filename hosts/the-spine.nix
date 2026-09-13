@@ -3,6 +3,7 @@
   pkgs,
   lib,
   inputs,
+  nixpkgs-unstable,
   ...
 }:
 {
@@ -56,6 +57,7 @@
       "video"
       "disk"
       "networkmanager"
+      "onepassword"
     ];
     uid = 1000;
     openssh.authorizedKeys.keys = [
@@ -140,6 +142,17 @@
   # high-resolution display
 
   system.stateVersion = "20.09"; # Did you read the comment?
+
+  programs._1password = {
+    enable = true;
+    package = nixpkgs-unstable._1password-cli;
+  };
+
+  programs._1password-gui = {
+    enable = true;
+    package = nixpkgs-unstable._1password-gui;
+    polkitPolicyOwners = [ "xian" ];
+  };
 
   environment.etc = {
     "1password/custom_allowed_browsers" = {
