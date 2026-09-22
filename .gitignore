@@ -11,3 +11,5 @@ disk.nix
 *.key
 /docs/gpu-performance-debugging.ipynb
 .superpowers
+/.worktrees
+/result
