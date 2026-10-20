@@ -11,6 +11,55 @@
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.efi.efiSysMountPoint = "/boot/efi";
 
+  # Show the LUKS password prompt in Plymouth before mounting the root volume.
+  boot.initrd.systemd.enable = true;
+  boot.plymouth = {
+    enable = true;
+    theme = "mintchaos";
+    themePackages = [
+      (pkgs.runCommand "plymouth-theme-mintchaos"
+        {
+          nativeBuildInputs = [
+            pkgs.imagemagick
+            pkgs.librsvg
+          ];
+        }
+        ''
+          themeDir="$out/share/plymouth/themes/mintchaos"
+          mkdir -p "$themeDir"
+          cp ${../themes/mintchaos/mintchaos.plymouth} "$themeDir/mintchaos.plymouth"
+          cp ${config.boot.plymouth.package}/share/plymouth/themes/spinner/*.png "$themeDir/"
+
+          # Two-step draws the header immediately above the spinner. Transparent
+          # space below the artwork leaves it just below the midpoint at 1440p.
+          rsvg-convert -w 246 -h 293 ${../themes/mintchaos/min-tch-aos.svg} -o "$TMPDIR/mintchaos-logo.png"
+          magick "$TMPDIR/mintchaos-logo.png" -gravity north -background none \
+            -extent 246x597 "$themeDir/header-image.png"
+
+          # The website's panel brown is the ring; its logo brown is the pointer.
+          magick -size 256x1 xc:'#2D231A' -fill '#3B2617' \
+            -draw 'rectangle 192,0 255,0' "$TMPDIR/spinner-colors.png"
+          for frame in "$themeDir"/{animation,throbber}-*.png; do
+            magick "$frame" "$TMPDIR/spinner-colors.png" -channel RGB -clut +channel \
+              -channel A -evaluate Multiply 4 +channel -strip "PNG32:$frame.new"
+            mv "$frame.new" "$frame"
+          done
+
+          magick ${config.boot.plymouth.logo} -channel RGB -fill '#3B2617' \
+            -colorize 100 +channel "$themeDir/watermark.png"
+        ''
+      )
+    ];
+  };
+  # Keep kernel and initrd status text off the console until Plymouth appears.
+  boot.consoleLogLevel = 3;
+  boot.initrd.verbose = false;
+  boot.kernelParams = [
+    "quiet"
+    "rd.udev.log_level=3"
+    "rd.systemd.show_status=auto"
+  ];
+
   # Delete once https://github.com/NixOS/nixpkgs/pull/107400 is in.
 
   # xone 0.5.8 fixes the wireless dongle losing its controller after sleep.
@@ -31,7 +80,7 @@
     "mei_me"
     "radeon"
   ];
-  boot.initrd.kernelModules = [ ];
+  boot.initrd.kernelModules = [ "amdgpu" ];
   boot.extraModulePackages = [ ];
 
   networking.hostName = "the-spine";
