@@ -16,6 +16,7 @@ This is a personal NixOS system configuration repository using Nix flakes. The r
 ## Build and Management Commands
 
 Use `nh` for all builds. Include `-q`/`--quiet` on `nh` commands unless you need verbose output. Run `nh --help`, `nh os --help`, or `nh home --help` for full options.
+Run `nh` as the regular user, never with `sudo`; it escalates privileges itself when needed.
 Standard `nixos-rebuild` and `home-manager` are still available if needed.
 
 ### System
