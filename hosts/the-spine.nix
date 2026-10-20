@@ -169,11 +169,6 @@
     gnupg
   ];
 
-  services.displayManager.autoLogin = {
-    enable = true;
-    user = "xian";
-  };
-
   hardware.steam-hardware.enable = true; # VR
   hardware.xone.enable = true;
 

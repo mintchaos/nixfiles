@@ -20,7 +20,13 @@
 
   services.greetd = {
     enable = true;
+    useTextGreeter = true;
     settings = {
+      # Start Niri once after boot; show tuigreet after logging out.
+      initial_session = {
+        command = "${pkgs.niri-unstable}/bin/niri-session";
+        user = "xian";
+      };
       default_session = {
         command = "${pkgs.tuigreet}/bin/tuigreet --time --cmd niri-session";
         user = "greeter";
