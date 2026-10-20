@@ -8,6 +8,8 @@
 }:
 {
   boot.loader.systemd-boot.enable = true;
+  # The 510 MiB EFI partition cannot hold unlimited Plymouth initrds.
+  boot.loader.systemd-boot.configurationLimit = 5;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.efi.efiSysMountPoint = "/boot/efi";
 
