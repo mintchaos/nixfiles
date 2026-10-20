@@ -13,7 +13,20 @@
 
   # Delete once https://github.com/NixOS/nixpkgs/pull/107400 is in.
 
-  boot.kernelPackages = pkgs.pkgs.linuxPackages_latest;
+  # xone 0.5.8 fixes the wireless dongle losing its controller after sleep.
+  boot.kernelPackages = pkgs.linuxPackages_latest.extend (
+    _: prev: {
+      xone = prev.xone.overrideAttrs (_: {
+        version = "0.5.8";
+        src = pkgs.fetchFromGitHub {
+          owner = "dlundqvist";
+          repo = "xone";
+          tag = "v0.5.8";
+          hash = "sha256-ENk/SOUzXbzXYhwN3AdbO2u/tWjf/Mn+V22A2ce21XU=";
+        };
+      });
+    }
+  );
   boot.blacklistedKernelModules = [
     "mei_me"
     "radeon"
