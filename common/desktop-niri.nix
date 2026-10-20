@@ -58,5 +58,26 @@
     };
   };
 
+  # Portal activation can race Niri's Wayland socket and session environment.
+  # The main portal also needs GNOME's backend ready when it reads cast sources.
+  systemd.user.services = {
+    xdg-desktop-portal = {
+      enableDefaultPath = false;
+      requires = [
+        "niri.service"
+        "xdg-desktop-portal-gnome.service"
+      ];
+      after = [
+        "niri.service"
+        "xdg-desktop-portal-gnome.service"
+      ];
+    };
+    xdg-desktop-portal-gnome = {
+      enableDefaultPath = false;
+      requires = [ "niri.service" ];
+      after = [ "niri.service" ];
+    };
+  };
+
   security.pam.services.swaylock = { };
 }
