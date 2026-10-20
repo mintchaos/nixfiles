@@ -35,7 +35,28 @@
   boot.extraModulePackages = [ ];
 
   networking.hostName = "the-spine";
+  # DNS is handled by the local dnsmasq and resolvconf setup.
+  # Avoid blocking NetworkManager's wake path on resolvconf updates.
+  networking.networkmanager.dns = "none";
+  # openresolv's default wrapper hides the helpers its dnsmasq subscriber
+  # needs to send changing Tailscale DNS routes over D-Bus.
+  networking.resolvconf.package = pkgs.openresolv.overrideAttrs (_: {
+    postInstall = ''
+      wrapProgram "$out/sbin/resolvconf" --set PATH "${
+        lib.makeBinPath [
+          pkgs.coreutils
+          pkgs.dbus
+          pkgs.gnugrep
+        ]
+      }"
+    '';
+  });
   services.dnsmasq.enable = true;
+  # Reapply routes held by resolvconf after dnsmasq loses its D-Bus state.
+  systemd.services.dnsmasq.serviceConfig.ExecStartPost =
+    "${lib.getExe config.networking.resolvconf.package} -u";
+  systemd.services.tailscaled.after = [ "dnsmasq.service" ];
+  systemd.services.tailscaled.wants = [ "dnsmasq.service" ];
   services.dnsmasq.settings.server = [
     "100.100.100.100"
     "8.8.8.8"
