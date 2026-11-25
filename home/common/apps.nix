@@ -2,6 +2,7 @@
   pkgs,
   inputs,
   nixpkgs-unstable,
+  discordPackage,
   ...
 }:
 {
@@ -113,7 +114,8 @@
     google-chrome
     firefox
     # arc-browser // only darwin currently
-    discord
+    # Discord requires host updates before they reach the stable channel.
+    discordPackage
     # steam
     gamescope
     vscode

@@ -17,9 +17,13 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-26.05";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixpkgs-discord.url = "github:NixOS/nixpkgs/nixos-unstable";
 
     home-manager.url = "github:nix-community/home-manager/release-26.05";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
+
+    rex.url = "https://pkgs.superlogical.com/rex/nix/snapshot.tar.gz";
+    rex-rune.url = "github:shuv1337/rex-rune";
 
     niri.url = "github:sodiboo/niri-flake";
     vicinae.url = "github:vicinaehq/vicinae";
@@ -76,6 +80,12 @@
 
       homeManagerExtraSpecialArgs = {
         inherit inputs nixpkgs-unstable;
+        # Update Discord without refreshing unrelated unstable applications.
+        discordPackage =
+          (import inputs.nixpkgs-discord {
+            inherit system;
+            config.allowUnfree = true;
+          }).discord;
       };
     in
     {
@@ -106,6 +116,8 @@
         extraSpecialArgs = homeManagerExtraSpecialArgs;
         modules = [
           inputs.niri.homeModules.niri
+          # Match the system package when activating Home Manager separately.
+          ({ pkgs, ... }: { programs.niri.package = pkgs.niri-unstable; })
           ./home/desktop.nix
         ];
       };

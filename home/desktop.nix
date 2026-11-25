@@ -10,10 +10,17 @@
     # pushes it via home-manager.sharedModules for the NixOS build path.
     # The standalone home-manager path adds it in flake.nix.
     inputs.vicinae.homeManagerModules.default
+    inputs.rex.homeManagerModules.default
     ./common/wayland.nix
     ./common/apps.nix
     ./common/niri
   ];
+
+  services.rex.enable = true;
+  # Leave SSH client configuration outside Home Manager for the local setup.
+  programs.rex.sshGuard = false;
+
+  home.packages = [ inputs.rex-rune.packages.${pkgs.stdenv.hostPlatform.system}.default ];
 
   xresources.properties = {
     # Doesn't seem like most things need this, but flatpak electron apps do.

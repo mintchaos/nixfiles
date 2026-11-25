@@ -1,6 +1,6 @@
 {
   "currentThemeName": "custom",
-  "currentThemeCategory": "registry",
+  "currentThemeCategory": "custom",
   "customThemeFile": "/home/xian/.config/DankMaterialShell/themes/catppuccin/theme.json",
   "registryThemeVariants": {
     "rosePine": "dawn",
@@ -12,7 +12,7 @@
     },
     "catppuccin": {
       "dark": {
-        "flavor": "mocha",
+        "flavor": "latte",
         "accent": "mauve"
       }
     },
@@ -20,13 +20,11 @@
     "petrichor": "pink",
     "peaceAndQuiet": "pink"
   },
-  "cornerRadius": 8,
   "niriLayoutRadiusOverride": 8,
   "niriLayoutBorderSize": 2,
   "clockFormat": "12h",
   "useFahrenheit": true,
-  "barElevationEnabled": false,
-  "workspaceFocusedBorderEnabled": true,
+  "barElevationEnabled": true,
   "networkPreference": "ethernet",
   "cursorSettings": {
     "theme": "System Default",
@@ -67,7 +65,8 @@
         },
         {
           "id": "workspaceSwitcher",
-          "enabled": true
+          "enabled": true,
+          "workspaceFocusedBorderEnabled": true
         },
         {
           "id": "runningApps",
@@ -166,7 +165,6 @@
       "popupGapsManual": 4,
       "maximizeWidgetIcons": true,
       "maximizeWidgetText": false,
-      "removeWidgetPadding": false,
       "shadowIntensity": 0,
       "widgetOutlineEnabled": false,
       "widgetOutlineColor": "primary",
@@ -175,34 +173,96 @@
       "shadowColorMode": "surface",
       "maximizeDetection": true,
       "widgetPadding": 12,
-      "attachToScreenEdge": false
+      "attachToScreenEdge": false,
+      "followInterfaceStyle": false,
+      "widgetFollowInterfaceStyle": true
     }
   ],
-  "desktopClockCustomColor": {
-    "r": 1,
-    "g": 1,
-    "b": 1,
-    "a": 1,
-    "hsvHue": -1,
-    "hsvSaturation": 0,
-    "hsvValue": 1,
-    "hslHue": -1,
-    "hslSaturation": 0,
-    "hslLightness": 1,
-    "valid": true
-  },
-  "systemMonitorCustomColor": {
-    "r": 1,
-    "g": 1,
-    "b": 1,
-    "a": 1,
-    "hsvHue": -1,
-    "hsvSaturation": 0,
-    "hsvValue": 1,
-    "hslHue": -1,
-    "hslSaturation": 0,
-    "hslLightness": 1,
-    "valid": true
-  },
-  "configVersion": 18
+  "configVersion": 42,
+  "radiusStrength": 25,
+  "dockConfigs": [
+    {
+      "id": "dock",
+      "name": "Dock",
+      "enabled": false,
+      "screenPreferences": [
+        "all"
+      ],
+      "showOnLastDisplay": true,
+      "position": 3,
+      "mode": "compact",
+      "taskbarAlign": "center",
+      "widgetExpansion": "popout",
+      "iconSize": 45,
+      "spacing": 4,
+      "itemSpacing": 4,
+      "margin": 0,
+      "bottomGap": 0,
+      "transparency": 1,
+      "followInterfaceStyle": true,
+      "autoHide": true,
+      "smartAutoHide": false,
+      "useOverlayLayer": false,
+      "editOnRightClick": false,
+      "showOnFullscreen": false,
+      "openOnOverview": false,
+      "groupByApp": false,
+      "separatePinnedAndRunningApps": false,
+      "restoreSpecialWorkspaceOnClick": false,
+      "isolateDisplays": false,
+      "indicatorStyle": "circle",
+      "borderEnabled": false,
+      "borderColor": "surfaceText",
+      "borderOpacity": 1,
+      "borderThickness": 1,
+      "launcherEnabled": true,
+      "launcherLogoMode": "apps",
+      "launcherLogoCustomPath": "",
+      "launcherLogoColorOverride": "",
+      "launcherLogoSizeOffset": 0,
+      "launcherLogoBrightness": 0.5,
+      "launcherLogoContrast": 1,
+      "maxVisibleApps": 0,
+      "maxVisibleRunningApps": 0,
+      "showOverflowBadge": true,
+      "showTrash": false,
+      "trashFileManager": "default",
+      "trashCustomCommand": "",
+      "magnification": false,
+      "magnificationScale": 130,
+      "magnificationProfile": "parabolic",
+      "magnificationExpand": false,
+      "order": [],
+      "widgets": [
+        {
+          "id": "dock_launcher",
+          "widgetId": "dockLauncher",
+          "enabled": true
+        },
+        {
+          "id": "dock_apps",
+          "widgetId": "appsDock",
+          "enabled": true,
+          "runningAppsCurrentWorkspace": false
+        },
+        {
+          "id": "dock_trash",
+          "widgetId": "dockTrash",
+          "enabled": true
+        }
+      ]
+    }
+  ],
+  "dmsWindowsFloatingSeeded": [
+    "niri"
+  ],
+  "blurBorderEnabled": true,
+  "m3ElevationEnabled": true,
+  "popupTransparency": 0.88,
+  "foregroundLayerTransparency": 0.95,
+  "blurLayerOutlineOpacity": 0,
+  "blurEnabled": true,
+  "blurBorderSeeded": true,
+  "blurWallpaperOnOverview": false,
+  "hostSurfaceColor": "default"
 }
