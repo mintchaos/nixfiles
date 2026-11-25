@@ -27,8 +27,8 @@
   programs.dank-material-shell = {
     enable = true;
 
-    niri = {
-      enableSpawn = true;
+    systemd = {
+      enable = true;
     };
 
     enableSystemMonitoring = true;
