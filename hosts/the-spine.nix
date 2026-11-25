@@ -120,6 +120,11 @@
   services.udisks2.enable = true;
 
   services.localtimed.enable = true;
+  # Preserve this host's existing account IDs. GeoClue's allowlist uses the
+  # declared UID, while activation deliberately leaves existing IDs unchanged.
+  ids.uids.localtimed = lib.mkForce 1001;
+  ids.gids.localtimed = lib.mkForce 994;
+  users.users.localtimed.isSystemUser = true;
 
   # ssh
   services.sshd.enable = true;
