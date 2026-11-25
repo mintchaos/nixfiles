@@ -102,6 +102,8 @@
     bun
     inputs.seance.packages.${pkgs.stdenv.hostPlatform.system}.default
     (lib.lowPrio ghostty)
+    nixpkgs-unstable.opencode
+    nixpkgs-unstable.opencode-desktop
     nixpkgs-unstable.jujutsu
     nixpkgs-unstable.lazyjj
     nixpkgs-unstable.jjui
