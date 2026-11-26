@@ -34,7 +34,8 @@
       open-fullscreen = true;
     }
     {
-      matches = [ { app-id = "steam"; } ];
+      # The Steam client opens in the background. Games use IDs such as steam_app_499170.
+      matches = [ { app-id = "^steam$"; } ];
       open-focused = false;
     }
     {
