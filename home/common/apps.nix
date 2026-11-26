@@ -101,6 +101,7 @@
     yazi
     bun
     inputs.seance.packages.${pkgs.stdenv.hostPlatform.system}.default
+    inputs.plannotator.packages.${pkgs.stdenv.hostPlatform.system}.default
     (lib.lowPrio ghostty)
     nixpkgs-unstable.opencode
     nixpkgs-unstable.opencode-desktop

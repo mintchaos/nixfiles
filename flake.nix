@@ -61,6 +61,11 @@
       url = "github:sadjow/codex-cli-nix/main";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    plannotator = {
+      url = "path:./custom-flakes/plannotator";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =

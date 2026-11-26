@@ -527,6 +527,22 @@
         "type": "github"
       }
     },
+    "plannotator": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "path": "./custom-flakes/plannotator",
+        "type": "path"
+      },
+      "original": {
+        "path": "./custom-flakes/plannotator",
+        "type": "path"
+      },
+      "parent": []
+    },
     "rex": {
       "inputs": {
         "nixpkgs": "nixpkgs_5"
@@ -574,6 +590,7 @@
         "nixpkgs": "nixpkgs_4",
         "nixpkgs-discord": "nixpkgs-discord",
         "nixpkgs-unstable": "nixpkgs-unstable",
+        "plannotator": "plannotator",
         "rex": "rex",
         "rex-rune": "rex-rune",
         "seance": "seance",
